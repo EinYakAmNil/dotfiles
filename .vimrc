@@ -9,8 +9,8 @@ set wildmenu
 set tabstop=2
 set shiftwidth=2
 set autoindent
-set cindent
-"set smartindent
+"set cindent
+set smartindent
 set visualbell
 set guioptions-=T
 set guioptions-=m
@@ -19,13 +19,8 @@ set showcmd
 syntax on
 nnoremap <Space> :
 nnoremap <C-i> i<C-t><Esc>
-
-"Folding configuration
-setl foldmethod=indent
-let &l:foldlevel = 1
-nnoremap z za
-nnoremap Z zA
-set foldignore=\"\"\"
+setlocal formatoptions=ctnqro
+setlocal comments+=n:*,n:#
 
 "Autodetect filetype.
 augroup vimrc_filetype
@@ -46,6 +41,7 @@ function! s:Cfile()
 "	inoremap ;mptr <Esc>:r $HOME/.vim/matrix_ptr.c<CR>
 "				\wa
 	set cindent
+	inoremap ;cb /*<CR><CR>/<CR><++><Esc>2ka<Space>
 	"	Only activate this section if there is a batch script to compile C called
 	"	'compile'
 "	nnoremap <buffer> <F5> :w<CR>:!clear<CR>:exec '!compile' shellescape(@%, 1)<CR>
@@ -88,6 +84,10 @@ function! s:Pyfile()
 	set shiftwidth=4
 	set textwidth=79
 	set fileformat=unix
+
+"Folding configuration
+set foldmethod=indent
+nnoremap z zA
 endfunction
 
 function! s:Texfile()
