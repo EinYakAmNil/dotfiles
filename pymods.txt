@@ -2,40 +2,40 @@
 Please wait a moment while I gather a list of all available modules...
 
 pymol.opengl is deprecated, us the OpenGL module from http://pyopengl.sf.net instead
-AptUrl              appdirs             html                reprlib
-Bio                 apport              html5lib            requests
-BioSQL              apport_python_hook  http                requests_unixsocket
-CommandNotFound     apt                 httplib2            resource
-Crypto              apt_inst            idna                rlcompleter
-DistUpgrade         apt_pkg             imaplib             runpy
-HweSupportStatus    aptdaemon           imghdr              scanext
-LanguageSelector    aptsources          imp                 sched
-NvidiaDetector      argparse            importlib           scipy
-OpenGL              array               inspect             secrets
-PIL                 asn1crypto          io                  secretstorage
-PyQt5               ast                 ipaddress           select
-Quirks              astor               itertools           selectors
-ScreenResolution    asynchat            janitor             setuptools
-UbuntuDrivers       asyncio             json                shelve
-UbuntuSystemService asyncore            keras_applications  shlex
-UpdateManager       atexit              keras_preprocessing shutil
-__future__          audioop             keyring             signal
-_abc                base64              keyword             simplejson
-_ast                bdb                 kiwisolver          sip
-_asyncio            binascii            language_support_pkgs sipconfig
-_bisect             binhex              launchpadlib        sipconfig_nd7
-_blake2             bisect              lib2to3             site
-_bootlocale         brlapi              linecache           sitecustomize
-_bz2                builtins            locale              six
-_cffi_backend       bz2                 logging             smtpd
-_codecs             cProfile            louis               smtplib
-_codecs_cn          cachecontrol        lsb_release         sndhdr
-_codecs_hk          cairo               lzma                socket
-_codecs_iso2022     calendar            macaroonbakery      socketserver
-_codecs_jp          certifi             macpath             softwareproperties
-_codecs_kr          cgi                 mailbox             speechd
-_codecs_tw          cgitb               mailcap             speechd_config
-_collections        chardet             mako                spwd
+AptUrl              apport              html5lib            requests
+Bio                 apport_python_hook  http                requests_unixsocket
+BioSQL              apt                 httplib2            resource
+CommandNotFound     apt_inst            idna                rlcompleter
+Crypto              apt_pkg             imaplib             runpy
+DistUpgrade         aptdaemon           imghdr              scanext
+HweSupportStatus    aptsources          imp                 sched
+LanguageSelector    argparse            importlib           scipy
+NvidiaDetector      array               inspect             secrets
+OpenGL              asn1crypto          io                  secretstorage
+PIL                 ast                 ipaddress           select
+PyQt5               astor               itertools           selectors
+Quirks              asynchat            janitor             setuptools
+ScreenResolution    asyncio             json                shelve
+UbuntuDrivers       asyncore            keras_applications  shlex
+UbuntuSystemService atexit              keras_preprocessing shutil
+UpdateManager       audioop             keyring             signal
+__future__          base64              keyword             simplejson
+_abc                bdb                 kiwisolver          sip
+_ast                binascii            language_support_pkgs sipconfig
+_asyncio            binhex              launchpadlib        sipconfig_nd7
+_bisect             bisect              lib2to3             site
+_blake2             brlapi              linecache           sitecustomize
+_bootlocale         bs4                 locale              six
+_bz2                builtins            logging             smtpd
+_cffi_backend       bz2                 louis               smtplib
+_codecs             cProfile            lsb_release         sndhdr
+_codecs_cn          cachecontrol        lzma                socket
+_codecs_hk          cairo               macaroonbakery      socketserver
+_codecs_iso2022     calendar            macpath             softwareproperties
+_codecs_jp          certifi             mailbox             soupsieve
+_codecs_kr          cgi                 mailcap             speechd
+_codecs_tw          cgitb               mako                speechd_config
+_collections        chardet             manga-update        spwd
 _collections_abc    chempy              markdown            sqlite3
 _compat_pickle      chunk               markupsafe          sre_compile
 _compression        cmath               marshal             sre_constants
@@ -111,6 +111,7 @@ abc                 hashlib             random              zipfile
 absl                heapq               re                  zipimport
 aifc                hmac                readline            zlib
 antigravity         hpmudext            reportlab           zope
+appdirs             html                reprlib             
 
 Enter any module name to get more help.  Or, type "modules spam" to search
 for modules whose name or summary contain the string "spam".

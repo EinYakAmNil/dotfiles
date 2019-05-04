@@ -1,6 +1,7 @@
 "Some nice basic settings
 filetype on
 filetype indent plugin on
+set omnifunc=syntaxcomplete#Complete
 set encoding=utf-8
 colo mine
 set nu
@@ -19,8 +20,6 @@ set showcmd
 syntax on
 nnoremap <Space> :
 nnoremap <C-i> i<C-t><Esc>
-setlocal formatoptions=ctnqro
-setlocal comments+=n:*,n:#
 
 "Autodetect filetype.
 augroup vimrc_filetype
@@ -31,6 +30,7 @@ augroup vimrc_filetype
 	autocmd FileType plaintex call s:Texfile()
 	autocmd FileType tex call s:Texfile()
 	autocmd FileType vim call s:Vimrc()
+	autocmd FileType sh call s:Shfile()
 augroup end
 "Automatically source vimrc on save.
 autocmd! bufwritepost $MYVIMRC source $MYVIMRC
@@ -86,8 +86,17 @@ function! s:Pyfile()
 	set fileformat=unix
 
 "Folding configuration
-set foldmethod=indent
-nnoremap z zA
+	set foldmethod=indent
+	nnoremap z zA
+
+"Auto-continue comments
+	setlocal formatoptions=ctnqro
+	setlocal comments+=n:*,n:#
+endfunction
+
+function! s:Shfile()
+	map <silent> <C-c> :s/^/\#/<CR>:noh<CR>
+	map <silent> <C-u> :s/^\s*\#//<CR>:noh<CR>
 endfunction
 
 function! s:Texfile()
@@ -105,8 +114,8 @@ function! s:Texfile()
 "Uncomment command below it,to use it in Linux.
 "	nnoremap <buffer> <F5> :w<CR>:!start /b pdflatex -shell-escape %<CR>
 "	nnoremap <buffer> <F6> :silent !start "%:r.pdf"<CR>
-"	nnoremap <buffer> <F5> :w<CR>:silent !pdflatex -shell-escape %<CR><CR>
-"	nnoremap <buffer> <F6> :%:r.pdf & disown<CR><CR>
+	nnoremap <buffer> <F5> :w<CR>:!pdflatex % & disown<CR>
+	nnoremap <buffer> <F6> :!zathura --fork %:r.pdf<CR><CR>
 
 "Commenting in a .tex file.
 	map <silent> <C-c> :s/^/\%/<CR>:noh<CR>
@@ -115,6 +124,10 @@ function! s:Texfile()
 	inoremap $$ $
 	inoremap ;qq \glqq\grqq{}<Esc>3bi<Space>
 	inoremap ;begin \begin{<CR><BS>\end{<Esc><C-v>$kA
+
+"Auto-continue \item
+	setlocal formatoptions=ctnqro
+	setlocal comments+=n:*,n:"\item"
 endfunction
 
 function! s:Vimrc()
