@@ -140,30 +140,30 @@ EDITOR=vim
 
 # Personal aliases and functions
 
-function pdf {
-	mupdf -I "$@" & disown
-}
-
 function mkcd {
 	mkdir "$@"
 	cd "$@"
 }
 
-function load-playlist {
-	youtube-dl https://www.youtube.com/playlist?list=PLuN8omoxqHiO6i26_7EyaKJCj7kPVcFwq
+function dl-playlist {
+	youtube-dl "https://www.youtube.com/playlist?list=PLuN8omoxqHiO6i26_7EyaKJCj7kPVcFwq"
 	notify-send "Finish downloading playlist"
-	bash ~/Vorlagen/to_name.bash
+	bash ~/customs/to_name.bash
 	cd ~/ToRename
 	vim to_rename.bash
 	bash to_rename.bash
+	picard *.mp3
 	mv *.mp3 ~/Musik
+}
+
+function csv {
+	column -s, -t < "$@" | less -#2 -N -S
 }
 
 alias ..='cd ..'
 alias ...='cd ../..'
 alias cbmac='ssh linkai@131.188.171.226'
 alias bashrc='vim ~/.bashrc && source $_'
-alias name-music='bash ~/Vorlagen/to_name.bash && vim ~/Musik/ToRename/to_rename.bash && bash $_'
 alias vimrc='vim ~/.vimrc'
 alias python='python3'
 alias pip='pip3'
@@ -172,3 +172,7 @@ alias faubox='sh /usr/share/FAUbox/FAUbox-Client.sh'
 alias -- -='cd ~-'
 alias camera='vlc v4l2:///dev/video0'
 alias fixbg='dbus-send --type=method_call --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Eval "string:global.reexec_self()"'
+alias pdf='zathura --fork'
+alias new-manga='python ~/customs/manga-update.py'
+alias vi='/usr/bin/vim'
+alias clip='xclip -sel clip'
