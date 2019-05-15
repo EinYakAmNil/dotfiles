@@ -4,8 +4,8 @@ filetype on
 filetype indent plugin on
 set omnifunc=syntaxcomplete#Complete
 set encoding=utf-8
-"colo mine
-colo torte
+colo mine
+"colo torte
 set nu
 set relativenumber
 set wildmenu
@@ -28,12 +28,16 @@ autocmd! bufwritepost $MYVIMRC source $MYVIMRC
 
 "<-->
 "Settings for C files.
+autocmd FileType c	setlocal formatoptions=ctnqr
 autocmd FileType c	map <silent> <C-c> :s/^/\/\//<CR>:noh<CR>
 autocmd FileType c	map <silent> <C-u> :s/^\s*\/\///<CR>:noh<CR>
 autocmd FileType c	set cindent
-autocmd FileType c	inoremap ;cb /*<CR><CR>/<CR><++><Esc>2ka<Space>
+autocmd FileType c	inoremap ,cb /*<CR><CR>/<CR><++><Esc>2ka<Space>
 autocmd FileType c	nnoremap <buffer> <F5>
 			\ :w<CR>:!clear<CR>:!gcc % -o %:r.out<CR>:!./%:r.out<CR>
+autocmd FileType c inoremap ,main
+			\ <Esc>:-1r<Space>/home/linkai/snippets/intmain.c<CR>
+			\2jfnla
 
 "<-->
 "Settings for HTML files.
@@ -74,9 +78,11 @@ autocmd FileType python	nnoremap z zA
 "Auto-continue comments
 autocmd FileType python	setlocal formatoptions=ctnqr
 
-"Settings for Python files.
+"<-->
+"Settings for bash files.
 autocmd FileType sh	map <silent> <C-c> :s/^/\#/<CR>:noh<CR>
 autocmd FileType sh	map <silent> <C-u> :s/^\s*\#//<CR>:noh<CR>
+autocmd FileType sh	nnoremap <silent> <F5> :w!<CR>:!clear<CR>:!bash %<CR>
 
 "<-->
 "Settings for LaTeX files.
@@ -136,7 +142,7 @@ inoremap '' '
 "<-->
 "Jump to <++>. use ";tag" to quickly make this tag.
 inoremap <Space><Space> <Esc>/<++><CR>:noh<CR>"_c4l
-inoremap ;tag <++><Esc>
+inoremap ,tag <++><Esc>
 
 "<-->
 "Better key bindings to navigate/resize splitscreens.
