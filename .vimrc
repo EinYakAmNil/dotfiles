@@ -4,11 +4,12 @@ filetype on
 filetype indent plugin on
 set omnifunc=syntaxcomplete#Complete
 set encoding=utf-8
-colo mine
-"colo torte
+"colo mine
+colo torte
 set nu
 set relativenumber
 set wildmenu
+set ruler
 set tabstop=2
 set shiftwidth=2
 set autoindent
@@ -25,6 +26,7 @@ nnoremap <Space> :
 "Automatically source vimrc on save.
 autocmd! bufwritepost $MYVIMRC source $MYVIMRC
 
+"<-->
 "Settings for C files.
 autocmd FileType c	map <silent> <C-c> :s/^/\/\//<CR>:noh<CR>
 autocmd FileType c	map <silent> <C-u> :s/^\s*\/\///<CR>:noh<CR>
@@ -33,6 +35,7 @@ autocmd FileType c	inoremap ;cb /*<CR><CR>/<CR><++><Esc>2ka<Space>
 autocmd FileType c	nnoremap <buffer> <F5>
 			\ :w<CR>:!clear<CR>:!gcc % -o %:r.out<CR>:!./%:r.out<CR>
 
+"<-->
 "Settings for HTML files.
 autocmd FileType html	vmap <silent> <C-c> :s/^/<!--/<CR>:'<,'>s/$/-->/<CR>:noh<CR>
 autocmd FileType html	vmap <silent> <C-u> :s/^\s*<!--//<CR>:'<,'>s/-->$//<CR>:noh<CR>
@@ -44,6 +47,7 @@ autocmd FileType html	inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
 				\ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 autocmd FileType html	inoremap < <<C-x><C-o><C-n>
 
+"<-->
 "Settings for Python files.
 "Save and execute Python script from inside vim using F5.
 autocmd FileType python
@@ -74,6 +78,7 @@ autocmd FileType python	setlocal formatoptions=ctnqr
 autocmd FileType sh	map <silent> <C-c> :s/^/\#/<CR>:noh<CR>
 autocmd FileType sh	map <silent> <C-u> :s/^\s*\#//<CR>:noh<CR>
 
+"<-->
 "Settings for LaTeX files.
 "Compile .tex file using <F5> and open with <F6> in Windows.
 "Uncomment command below it,to use it in Linux.
@@ -95,6 +100,7 @@ autocmd FileType plaintex inoremap ;begin \begin{<CR><BS>\end{<Esc><C-v>$kA
 autocmd FileType plaintex setlocal formatoptions=ctnqro
 autocmd FileType plaintex setlocal comments+=n:\\item,n:\\usepackage
 
+"<-->
 "Settings for Vim files.
 autocmd FileType vim	nnoremap <silent> <C-c> :s/^/\"/<CR>:noh<CR>
 autocmd FileType vim	nnoremap <silent> <C-u> :s/^\s*\"//<CR>:noh<CR>
@@ -103,7 +109,11 @@ autocmd FileType vim	vnoremap <silent> <C-u> :s/^\s*\"//<CR>:noh<CR>
 autocmd FileType vim	inoremap < <><Space><++><Esc>5hi
 autocmd FileType vim	inoremap << <
 autocmd FileType vim	inoremap <> <>
+"General markings. Will not get deleted upon reaching them. Jump with <CR>.
+autocmd FileType vim noremap ;<CR> o"<--><Esc>
+autocmd FileType vim noremap <CR> /<--><CR>
 
+"<-->
 "Automatically make closing brackets/quote.
 "Double tap if not wanted
 inoremap { {}<Space><++><Esc>5hi
@@ -123,10 +133,12 @@ inoremap "" "
 inoremap ' ''<Space><++><Esc>5hi
 inoremap '' '
 
+"<-->
 "Jump to <++>. use ";tag" to quickly make this tag.
 inoremap <Space><Space> <Esc>/<++><CR>:noh<CR>"_c4l
 inoremap ;tag <++><Esc>
 
+"<-->
 "Better key bindings to navigate/resize splitscreens.
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
