@@ -4,8 +4,8 @@ filetype on
 filetype indent plugin on
 set omnifunc=syntaxcomplete#Complete
 set encoding=utf-8
-"colo mine
-colo torte
+colo transtorte
+"colo torte
 set nu
 set relativenumber
 set wildmenu
@@ -168,3 +168,6 @@ nnoremap > <C-w>>
 "scrolling in insert mode
 inoremap <C-e> <C-o><C-e>
 inoremap <C-y> <C-o><C-y>
+
+"Save clipboard upon exiting vim.
+autocmd VimLeave * call system("xclip -selection clipboard -i", getreg('+'))
