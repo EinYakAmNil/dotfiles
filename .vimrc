@@ -4,8 +4,8 @@ filetype on
 filetype indent plugin on
 set omnifunc=syntaxcomplete#Complete
 set encoding=utf-8
-colo mine
-"colo torte
+"colo mine
+colo torte
 set nu
 set relativenumber
 set wildmenu
@@ -55,11 +55,10 @@ autocmd FileType html	inoremap < <<C-x><C-o><C-n>
 "Settings for Python files.
 "Save and execute Python script from inside vim using F5.
 autocmd FileType python
-			\ nnoremap <buffer> <F5> :w<CR>:!clear<CR>:exec '!python3' shellescape(@%, 1)<CR>
+			\ nnoremap <buffer> <F5> :w<CR>:!clear<CR>:exec '!/Applications/PyMOL.app/Contents/bin/python3' shellescape(@%, 1)<CR>
 autocmd FileType python map <silent> <C-c> :s/^/\#/<CR>:noh<CR>
 autocmd FileType python	map <silent> <C-u> :s/^\s*\#//<CR>:noh<CR>
-"	inoremap ;docstr """<CR><BS>"""<CR><BS><++><Esc>2ka
-autocmd FileType python	inoremap ;docstr """<CR>"""<CR><++><Esc>2ka
+autocmd FileType python	inoremap ;ds """<CR>"""<CR><++><Esc>2ka
 autocmd FileType python	inoremap ;> >>><Tab>
 
 "PEP-8 Settings
@@ -139,6 +138,16 @@ inoremap "" "
 inoremap ' ''<Space><++><Esc>5hi
 inoremap '' '
 
+
+"<-->
+"Make brackets, quotes etc. around selected text.
+"Replaces content in the " register.
+vnoremap () s(<C-r>")<Esc>
+vnoremap [] s[<C-r>"]<Esc>
+vnoremap {} s{<C-r>"}<Esc>
+vnoremap '' s'<C-r>"'<Esc>
+vnoremap "" s"<C-r>""<Esc>
+
 "<-->
 "Jump to <++>. use ";tag" to quickly make this tag.
 inoremap <Space><Space> <Esc>/<++><CR>:noh<CR>"_c4l
@@ -154,3 +163,8 @@ nnoremap + <C-w>+
 nnoremap - <C-w>-
 nnoremap < <C-w><
 nnoremap > <C-w>>
+
+"<-->
+"scrolling in insert mode
+inoremap <C-e> <C-o><C-e>
+inoremap <C-y> <C-o><C-y>
