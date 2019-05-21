@@ -28,6 +28,11 @@ function csv {
 	column -s, -t < "$@" | less -#2 -N -S
 }
 
+function todo {
+	cd ~/Dokumente/Tex/
+	vim todo.tex
+}
+
 alias ..='cd ..'
 alias ...='cd ../..'
 alias cbmac='ssh linkai@131.188.171.226'
@@ -46,7 +51,6 @@ alias pdf='zathura --fork'
 alias new-manga='python ~/customs/manga-update.py'
 alias vi='/usr/bin/vim'
 alias clip='xclip -sel clip'
-alias todo='vim ~/Dokumente/Tex/todo.tex'
 alias i3conf='vim ~/.config/i3/config'
 alias statusconf='vim ~/.config/i3status/config'
 alias wp='feh --bg-fill'
