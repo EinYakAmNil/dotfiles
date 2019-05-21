@@ -40,6 +40,14 @@ autocmd FileType c inoremap ,main
 			\2jfnla
 
 "<-->
+"i3 conf file commenting
+autocmd FileType conf map <silent> <C-c> :s/^/\#/<CR>:noh<CR>
+autocmd FileType conf	map <silent> <C-u> :s/^\s*\#//<CR>:noh<CR>
+autocmd FileType conf nnoremap <F5> 
+			\:w<CR>:!pkill cycle.out<CR>
+			\:!i3-msg<Space>reload<CR>:!i3-msg<Space>restart<CR>
+
+"<-->
 "Settings for HTML files.
 autocmd FileType html	vmap <silent> <C-c> :s/^/<!--/<CR>:'<,'>s/$/-->/<CR>:noh<CR>
 autocmd FileType html	vmap <silent> <C-u> :s/^\s*<!--//<CR>:'<,'>s/-->$//<CR>:noh<CR>
@@ -55,7 +63,7 @@ autocmd FileType html	inoremap < <<C-x><C-o><C-n>
 "Settings for Python files.
 "Save and execute Python script from inside vim using F5.
 autocmd FileType python
-			\ nnoremap <buffer> <F5> :w<CR>:!clear<CR>:exec '!/Applications/PyMOL.app/Contents/bin/python3' shellescape(@%, 1)<CR>
+			\ nnoremap <buffer> <F5> :w<CR>:!clear<CR>:exec '!python3' shellescape(@%, 1)<CR>
 autocmd FileType python map <silent> <C-c> :s/^/\#/<CR>:noh<CR>
 autocmd FileType python	map <silent> <C-u> :s/^\s*\#//<CR>:noh<CR>
 autocmd FileType python	inoremap ;ds """<CR>"""<CR><++><Esc>2ka
@@ -88,9 +96,9 @@ autocmd FileType sh	nnoremap <silent> <F5> :w!<CR>:!clear<CR>:!bash %<CR>
 "Compile .tex file using <F5> and open with <F6> in Windows.
 "Uncomment command below it,to use it in Linux.
 "replace "zathura" with your own pdf viewer.
-autocmd FileType plaintex	nnoremap <buffer> <F5> :w<CR>:!start /b pdflatex -shell-escape %<CR>
-autocmd FileType plaintex	nnoremap <buffer> <F6> :silent !start "%:r.pdf"<CR>
-autocmd FileType plaintex	nnoremap <buffer> <F5> :w<CR>:!pdflatex % & disown<CR>
+"autocmd FileType plaintex	nnoremap <buffer> <F5> :w<CR>:!start /b pdflatex -shell-escape %<CR>
+"autocmd FileType plaintex	nnoremap <buffer> <F6> :silent !start "%:r.pdf"<CR>
+autocmd FileType plaintex	nnoremap <buffer> <F5> :w<CR>:!pdflatex % > /dev/null 2>&1<CR><CR>
 autocmd FileType plaintex	nnoremap <buffer> <F6> :!zathura --fork %:r.pdf<CR><CR>
 
 "Commenting in a .tex file.
@@ -100,10 +108,33 @@ autocmd FileType plaintex inoremap $ $$<Space><++><Esc>5hi
 autocmd FileType plaintex inoremap $$ $
 autocmd FileType plaintex inoremap ;qq \glqq\grqq{}<Esc>3bi<Space>
 autocmd FileType plaintex inoremap ;begin \begin{<CR><BS>\end{<Esc><C-v>$kA
+autocmd FileType c inoremap ,tmplt
+			\ <Esc>:-1r<Space>/home/linkai/snippets/template.tex<CR>
 
 "Auto-continue \item
 autocmd FileType plaintex setlocal formatoptions=ctnqro
 autocmd FileType plaintex setlocal comments+=n:\\item,n:\\usepackage
+
+"<-->
+"Same settings for ft=tex
+"autocmd FileType tex	nnoremap <buffer> <F5> :w<CR>:!start /b pdflatex -shell-escape %<CR>
+"autocmd FileType tex	nnoremap <buffer> <F6> :silent !start "%:r.pdf"<CR>
+autocmd FileType tex	nnoremap <buffer> <F5> :w<CR>:!clear<CR>:!pdflatex % > /dev/null 2>&1<CR><CR>
+autocmd FileType tex	nnoremap <buffer> <F6> :!zathura --fork %:r.pdf<CR><CR>
+
+"Commenting in a .tex file.
+autocmd FileType tex map <silent> <C-c> :s/^/\%/<CR>:noh<CR>
+autocmd FileType tex map <silent> <C-u> :s/^\s*%//<CR>:noh<CR>
+autocmd FileType tex inoremap $ $$<Space><++><Esc>5hi
+autocmd FileType tex inoremap $$ $
+autocmd FileType tex inoremap ;qq \glqq\grqq{}<Esc>3bi<Space>
+autocmd FileType tex inoremap ;begin \begin{<CR><BS>\end{<Esc><C-v>$kA
+autocmd FileType c inoremap ,tmplt
+			\ <Esc>:-1r<Space>/home/linkai/snippets/template.tex<CR>
+
+"Auto-continue \item
+autocmd FileType tex setlocal formatoptions=ctnqro
+autocmd FileType tex setlocal comments+=n:\\item,n:\\usepackage
 
 "<-->
 "Settings for Vim files.
@@ -163,6 +194,10 @@ nnoremap + <C-w>+
 nnoremap - <C-w>-
 nnoremap < <C-w><
 nnoremap > <C-w>>
+
+"Faster scrolling
+"nnoremap <C-e> <C-e><C-e>
+"nnoremap <C-y> <C-y><C-y>
 
 "<-->
 "scrolling in insert mode

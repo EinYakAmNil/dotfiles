@@ -137,42 +137,6 @@ export PYTHONSTARTUP="$HOME/pystart.py"
 source '/usr/local/gromacs/bin/GMXRC'
 
 EDITOR=vim
+#stty -ixon
 
-# Personal aliases and functions
-
-function mkcd {
-	mkdir "$@"
-	cd "$@"
-}
-
-function dl-playlist {
-	youtube-dl "https://www.youtube.com/playlist?list=PLuN8omoxqHiO6i26_7EyaKJCj7kPVcFwq"
-	notify-send "Finish downloading playlist"
-	bash ~/customs/to_name.bash
-	cd ~/ToRename
-	vim to_rename.bash
-	bash to_rename.bash
-	picard *.mp3
-	mv *.mp3 ~/Musik
-}
-
-function csv {
-	column -s, -t < "$@" | less -#2 -N -S
-}
-
-alias ..='cd ..'
-alias ...='cd ../..'
-alias cbmac='ssh linkai@131.188.171.226'
-alias bashrc='vim ~/.bashrc && source $_'
-alias vimrc='vim ~/.vimrc'
-alias python='python3'
-alias pip='pip3'
-alias pymods='python -c "help(\"modules\")" > ~/SetInfos/pymods.txt'
-alias faubox='sh /usr/share/FAUbox/FAUbox-Client.sh'
-alias -- -='cd ~-'
-alias camera='vlc v4l2:///dev/video0'
-alias fixbg='dbus-send --type=method_call --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Eval "string:global.reexec_self()"'
-alias pdf='zathura --fork'
-alias new-manga='python ~/customs/manga-update.py'
-alias vi='/usr/bin/vim'
-alias clip='xclip -sel clip'
+source $HOME/.shorts.sh
