@@ -1,10 +1,11 @@
 # Personal aliases and functions
 
 function git-settings {
+	cd ~/SetInfos
 	cp ~/.shorts.sh ~/.vimrc ~/.bashrc ~/SetInfos/
 	cp ~/.config/i3/config ~/SetInfos/i3config
 	cp ~/.config/i3status/config ~/SetInfos/i3statusconfig
-	git add .bashrc .vimrc i3config i3statusconfig
+	git add .bashrc .vimrc i3config i3statusconfig .shorts.sh
 	git commit
 }
 
