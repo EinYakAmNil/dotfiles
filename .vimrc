@@ -98,7 +98,7 @@ autocmd FileType sh	nnoremap <silent> <F5> :w!<CR>:!clear<CR>:!bash %<CR>
 "replace "zathura" with your own pdf viewer.
 "autocmd FileType plaintex	nnoremap <buffer> <F5> :w<CR>:!start /b pdflatex -shell-escape %<CR>
 "autocmd FileType plaintex	nnoremap <buffer> <F6> :silent !start "%:r.pdf"<CR>
-autocmd FileType plaintex	nnoremap <buffer> <F5> :w<CR>:!pdflatex % > /dev/null 2>&1<CR><CR>
+autocmd FileType plaintex	nnoremap <buffer> <F5> :w<CR>:!pdflatex % > /dev/null 2>&1 &<CR><CR>
 autocmd FileType plaintex	nnoremap <buffer> <F6> :!zathura --fork %:r.pdf<CR><CR>
 
 "Commenting in a .tex file.
@@ -106,7 +106,7 @@ autocmd FileType plaintex map <silent> <C-c> :s/^/\%/<CR>:noh<CR>
 autocmd FileType plaintex map <silent> <C-u> :s/^\s*%//<CR>:noh<CR>
 autocmd FileType plaintex inoremap $ $$<Space><++><Esc>5hi
 autocmd FileType plaintex inoremap $$ $
-autocmd FileType plaintex inoremap ;qq \glqq\grqq{}<Esc>3bi<Space>
+autocmd FileType plaintex inoremap ;qq \glqq\grqq{}<Space><++><Esc>F\i<Space>
 autocmd FileType plaintex inoremap ;begin \begin{<CR><BS>\end{<Esc><C-v>$kA
 autocmd FileType c inoremap ,tmplt
 			\ <Esc>:-1r<Space>/home/linkai/Vorlagen/template.tex<CR>
@@ -119,7 +119,7 @@ autocmd FileType plaintex setlocal comments+=n:\\item,n:\\usepackage
 "Same settings for ft=tex
 "autocmd FileType tex	nnoremap <buffer> <F5> :w<CR>:!start /b pdflatex -shell-escape %<CR>
 "autocmd FileType tex	nnoremap <buffer> <F6> :silent !start "%:r.pdf"<CR>
-autocmd FileType tex	nnoremap <buffer> <F5> :w<CR>:!clear<CR>:!pdflatex % > /dev/null 2>&1<CR><CR>
+autocmd FileType tex	nnoremap <buffer> <F5> :w<CR>:!clear<CR>:!pdflatex % > /dev/null 2>&1 &<CR><CR>
 autocmd FileType tex	nnoremap <buffer> <F6> :!zathura --fork %:r.pdf<CR><CR>
 
 "Commenting in a .tex file.
@@ -127,7 +127,7 @@ autocmd FileType tex map <silent> <C-c> :s/^/\%/<CR>:noh<CR>
 autocmd FileType tex map <silent> <C-u> :s/^\s*%//<CR>:noh<CR>
 autocmd FileType tex inoremap $ $$<Space><++><Esc>5hi
 autocmd FileType tex inoremap $$ $
-autocmd FileType tex inoremap ;qq \glqq\grqq{}<Esc>3bi<Space>
+autocmd FileType tex inoremap ;qq \glqq\grqq{}<Space><++><Esc>F\i<Space>
 autocmd FileType tex inoremap ;begin \begin{<CR><BS>\end{<Esc><C-v>$kA
 autocmd FileType c inoremap ,tmplt
 			\ <Esc>:-1r<Space>/home/linkai/Vorlangen/template.tex<CR>
