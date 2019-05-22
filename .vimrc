@@ -206,3 +206,7 @@ inoremap <C-y> <C-o><C-y>
 
 "Save clipboard upon exiting vim.
 autocmd VimLeave * call system("xclip -selection clipboard -i", getreg('+'))
+
+"<-->
+"ctags stuff
+nnoremap ü <C-]>

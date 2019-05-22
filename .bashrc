@@ -140,3 +140,5 @@ EDITOR=vim
 #stty -ixon
 
 source $HOME/.shorts.sh
+
+export PATH="$PATH:~/customs"
