@@ -36,8 +36,8 @@ autocmd FileType c	inoremap ,cb /*<CR><CR>/<CR><++><Esc>2ka<Space>
 autocmd FileType c	nnoremap <buffer> <F5>
 			\ :w<CR>:!clear<CR>:!gcc % -o %:r.out<CR>:!./%:r.out<CR>
 autocmd FileType c inoremap ,main
-			\ <Esc>:-1r<Space>/home/linkai/snippets/intmain.c<CR>
-			\2jfnla
+			\ <Esc>:-1r<Space>/home/linkai/Vorlagen/intmain.c<CR>
+			\2j$Fnla
 
 "<-->
 "i3 conf file commenting
@@ -109,7 +109,7 @@ autocmd FileType plaintex inoremap $$ $
 autocmd FileType plaintex inoremap ;qq \glqq\grqq{}<Esc>3bi<Space>
 autocmd FileType plaintex inoremap ;begin \begin{<CR><BS>\end{<Esc><C-v>$kA
 autocmd FileType c inoremap ,tmplt
-			\ <Esc>:-1r<Space>/home/linkai/snippets/template.tex<CR>
+			\ <Esc>:-1r<Space>/home/linkai/Vorlagen/template.tex<CR>
 
 "Auto-continue \item
 autocmd FileType plaintex setlocal formatoptions=ctnqro
@@ -130,7 +130,7 @@ autocmd FileType tex inoremap $$ $
 autocmd FileType tex inoremap ;qq \glqq\grqq{}<Esc>3bi<Space>
 autocmd FileType tex inoremap ;begin \begin{<CR><BS>\end{<Esc><C-v>$kA
 autocmd FileType c inoremap ,tmplt
-			\ <Esc>:-1r<Space>/home/linkai/snippets/template.tex<CR>
+			\ <Esc>:-1r<Space>/home/linkai/Vorlangen/template.tex<CR>
 
 "Auto-continue \item
 autocmd FileType tex setlocal formatoptions=ctnqro
