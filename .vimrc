@@ -200,9 +200,13 @@ nnoremap > <C-w>>
 "nnoremap <C-y> <C-y><C-y>
 
 "<-->
-"scrolling in insert mode
+"scrolling
 inoremap <C-e> <C-o><C-e>
 inoremap <C-y> <C-o><C-y>
+inoremap <C-j> <C-o><C-e>
+inoremap <C-k> <C-o><C-y>
+nnoremap J <C-e>
+nnoremap K <C-y>
 
 "Save clipboard upon exiting vim.
 autocmd VimLeave * call system("xclip -selection clipboard -i", getreg('+'))

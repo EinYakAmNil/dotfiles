@@ -142,3 +142,4 @@ EDITOR=vim
 source $HOME/.shorts.sh
 
 export PATH="$PATH:~/customs"
+export PATH="$PATH:~/GroPBS-Make"
