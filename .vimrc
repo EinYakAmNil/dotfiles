@@ -22,6 +22,7 @@ set completeopt=longest,menuone
 set showcmd
 syntax on
 nnoremap <Space> :
+nnoremap <CR> /
 
 "Automatically source vimrc on save.
 autocmd! bufwritepost $MYVIMRC source $MYVIMRC
@@ -58,6 +59,13 @@ autocmd FileType html	inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
 autocmd FileType html	inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
 				\ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 autocmd FileType html	inoremap < <<C-x><C-o><C-n>
+
+"<-->
+"Settings for Markdown
+autocmd FileType markdown nnoremap <F5> :w<CR>:!clear<CR>:!pandoc % -o %:r.pdf<CR>
+autocmd FileType markdown	nnoremap <buffer> <F6> :!zathura --fork %:r.pdf<CR><CR>
+autocmd FileType markdown set tabstop=4
+autocmd FileType markdown set shiftwidth=4
 
 "<-->
 "Settings for Python files.
@@ -106,9 +114,9 @@ autocmd FileType plaintex map <silent> <C-c> :s/^/\%/<CR>:noh<CR>
 autocmd FileType plaintex map <silent> <C-u> :s/^\s*%//<CR>:noh<CR>
 autocmd FileType plaintex inoremap $ $$<Space><++><Esc>5hi
 autocmd FileType plaintex inoremap $$ $
-autocmd FileType plaintex inoremap ;qq \glqq\grqq{}<Space><++><Esc>F\i<Space>
-autocmd FileType plaintex inoremap ;begin \begin{<CR><BS>\end{<Esc><C-v>$kA
-autocmd FileType c inoremap ,tmplt
+autocmd FileType plaintex inoremap ,qq \glqq\grqq{}<Space><++><Esc>F\i<Space>
+autocmd FileType plaintex inoremap ,begin \begin{<CR><BS>\end{<Esc><C-v>$kA
+autocmd FileType plaintex inoremap ,tmplt
 			\ <Esc>:-1r<Space>/home/linkai/Vorlagen/template.tex<CR>
 
 "Auto-continue \item
@@ -127,9 +135,9 @@ autocmd FileType tex map <silent> <C-c> :s/^/\%/<CR>:noh<CR>
 autocmd FileType tex map <silent> <C-u> :s/^\s*%//<CR>:noh<CR>
 autocmd FileType tex inoremap $ $$<Space><++><Esc>5hi
 autocmd FileType tex inoremap $$ $
-autocmd FileType tex inoremap ;qq \glqq\grqq{}<Space><++><Esc>F\i<Space>
-autocmd FileType tex inoremap ;begin \begin{<CR><BS>\end{<Esc><C-v>$kA
-autocmd FileType c inoremap ,tmplt
+autocmd FileType tex inoremap ,qq \glqq\grqq{}<Space><++><Esc>F\i<Space>
+autocmd FileType tex inoremap ,begin \begin{<CR><BS>\end{<Esc><C-v>$kA
+autocmd FileType tex inoremap ,tmplt
 			\ <Esc>:-1r<Space>/home/linkai/Vorlangen/template.tex<CR>
 
 "Auto-continue \item
