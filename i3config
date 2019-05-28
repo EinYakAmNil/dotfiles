@@ -199,3 +199,4 @@ exec_always ibus-daemon -d
 #custom keybindings
 bindsym Mod1+Tab workspace back_and_forth
 bindsym $mod+m exec ./customs/music
+bindsym $mod+t exec zathura ~/Dokumente/Tex/todo.pdf

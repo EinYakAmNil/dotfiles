@@ -114,6 +114,7 @@ autocmd FileType plaintex map <silent> <C-c> :s/^/\%/<CR>:noh<CR>
 autocmd FileType plaintex map <silent> <C-u> :s/^\s*%//<CR>:noh<CR>
 autocmd FileType plaintex inoremap $ $$<Space><++><Esc>5hi
 autocmd FileType plaintex inoremap $$ $
+autocmd FileType plaintex inoremap ` ``'' <++><Esc>F`a
 autocmd FileType plaintex inoremap ,qq \glqq\grqq{}<Space><++><Esc>F\i<Space>
 autocmd FileType plaintex inoremap ,begin \begin{<CR><BS>\end{<Esc><C-v>$kA
 autocmd FileType plaintex inoremap ,tmplt
@@ -135,6 +136,7 @@ autocmd FileType tex map <silent> <C-c> :s/^/\%/<CR>:noh<CR>
 autocmd FileType tex map <silent> <C-u> :s/^\s*%//<CR>:noh<CR>
 autocmd FileType tex inoremap $ $$<Space><++><Esc>5hi
 autocmd FileType tex inoremap $$ $
+autocmd FileType tex inoremap ` ``'' <++><Esc>F`a
 autocmd FileType tex inoremap ,qq \glqq\grqq{}<Space><++><Esc>F\i<Space>
 autocmd FileType tex inoremap ,begin \begin{<CR><BS>\end{<Esc><C-v>$kA
 autocmd FileType tex inoremap ,tmplt
