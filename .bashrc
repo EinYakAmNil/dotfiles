@@ -141,5 +141,5 @@ EDITOR=vim
 
 source $HOME/.shorts.sh
 
-export PATH="$PATH:~/customs"
-export PATH="$PATH:~/GroPBS-Make"
+export PATH="$PATH:/home/linkai/customs"
+export PATH="$PATH:/home/linkai/GroPBS-Make"

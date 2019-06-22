@@ -16,7 +16,7 @@ function mkcd {
 
 function dl-playlist {
 	youtube-dl "https://www.youtube.com/playlist?list=PLuN8omoxqHiO6i26_7EyaKJCj7kPVcFwq"
-	notify-send "Finish downloading playlist"
+	notify-send "$(figlet Done)"
 	bash ~/customs/to_name.bash
 	cd ~/ToRename
 	vim to_rename.bash
@@ -47,11 +47,5 @@ alias pymods='python -c "help(\"modules\")" > ~/SetInfos/pymods.txt'
 alias faubox='sh /usr/share/FAUbox/FAUbox-Client.sh'
 alias -- -='cd ~-'
 alias camera='vlc v4l2:///dev/video0'
-alias fixbg='dbus-send --type=method_call --dest=org.gnome.Shell /org/gnome/Shell org.gnome.Shell.Eval "string:global.reexec_self()"'
 alias pdf='zathura --fork'
-alias new-manga='python ~/customs/manga-update.py'
-alias vi='/usr/bin/vim'
-alias clip='xclip -sel clip'
 alias i3conf='vim ~/.config/i3/config'
-alias statusconf='vim ~/.config/i3status/config'
-alias wp='feh --bg-fill'

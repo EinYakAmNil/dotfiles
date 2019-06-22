@@ -20,6 +20,7 @@ set guioptions-=T
 set guioptions-=m
 set completeopt=longest,menuone
 set showcmd
+set laststatus=2
 syntax on
 nnoremap <Space> :
 nnoremap <CR> /
@@ -224,3 +225,4 @@ autocmd VimLeave * call system("xclip -selection clipboard -i", getreg('+'))
 "<-->
 "ctags stuff
 nnoremap ü <C-]>
+nnoremap Ü <C-t>

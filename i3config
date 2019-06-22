@@ -69,7 +69,7 @@ bindsym $mod+Shift+Right move right
 # bindsym $mod+h split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+#bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -178,8 +178,8 @@ client.unfocused        #000000 #000000 #aaaaaa #000000
 client.urgent           #000000 #000000 #ffffff #000000
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 0 +5% # increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 0 -5% # decrease sound volume
+bindsym XF86AudioRaiseVolume exec ~/customs/volctl up # increase sound volume
+bindsym XF86AudioLowerVolume exec ~/customs/volctl down # decrease sound volume
 #Bluetooth controls
 bindsym $mod+b exec ./customs/bt
 
@@ -198,5 +198,6 @@ exec_always ibus-daemon -d
 
 #custom keybindings
 bindsym Mod1+Tab workspace back_and_forth
-bindsym $mod+m exec ./customs/music
+bindsym $mod+m exec ~/customs/music
 bindsym $mod+t exec zathura ~/Dokumente/Tex/todo.pdf
+bindsym $mod+Shift+t exec gnome-terminal -e "vim /home/linkai/Dokumente/Tex/todo.tex"
