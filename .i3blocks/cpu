@@ -1,0 +1,3 @@
+#!/bin/bash
+
+mpstat -P ALL | tail -qn 8 | awk '{print $12}' | sed 's/\,/\./' | awk '{x = $1; printf("%0.f%, ", 100.00-x)}' | sed 's/\,\s$//'

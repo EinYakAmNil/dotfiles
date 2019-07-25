@@ -1,0 +1,19 @@
+#!/bin/bash
+TODONUM=$(tail -qn 1 /home/linkai/Dokumente/TODO-List)
+
+case $BLOCK_BUTTON  in
+	1) cat /home/linkai/Dokumente/TODO-List | sed \$d | xargs -0 notify-send ;; # Click to see all things todo
+	4) # Scrolling up to see todo with higher priority
+		if [[ $TODONUM -gt 1 ]]
+		then
+			sed -i "$ s/./$(tail -qn 1 $HOME/Dokumente/TODO-List | awk '{print $1-1}')/" $HOME/Dokumente/TODO-List
+		fi ;;
+	5) # Scrolling down to see todo with lower priority
+		if [[ $TODONUM -lt $(wc -l /home/linkai/Dokumente/TODO-List | cut -c 1)-1 ]]
+		then
+			sed -i "$ s/./$(tail -qn 1 $HOME/Dokumente/TODO-List | awk '{print $1+1}')/" $HOME/Dokumente/TODO-List
+		fi ;;
+esac
+
+TODO=$(sed "${TODONUM}q;d" /home/linkai/Dokumente/TODO-List)
+echo $TODO

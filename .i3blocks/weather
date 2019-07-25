@@ -1,0 +1,13 @@
+#!/bin/bash
+
+[[ $BLOCK_BUTTON = "1" ]] && curl -Ss 'https://wttr.in?0&T&Q' | sed 's/\x1b\[[0-9;]*m//g' | xargs -0 notify-send
+
+#curl -Ss 'https://wttr.in'
+temperature=$(curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2)
+
+rain=$(curl -Ss "wttr.in?1&T&Q" | grep -E -o "[0-9]+.[0-9]+ mm\s\|\s[0-9]+%")
+#amount=$(awk '{sum+=$1}; END {print sum/NR}' <<< $rain)
+#echo 🌧 $amount mm $chance%, $temperature
+chance=$(awk '{sum+=$4}; END {print sum/NR}' <<< $rain)
+
+echo 🌧 $chance%, $temperature

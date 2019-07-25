@@ -1,0 +1,10 @@
+#!/bin/bash
+
+prefix=$HOME/Musik/
+cd $prefix
+selec=$(ls -t *.mp3 | dmenu -i -fn "ubuntu mono")
+
+if [ $(echo $selec | wc -c) -gt 1 ]
+then
+	echo $prefix$selec | xargs -0 clementine {}
+fi

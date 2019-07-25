@@ -1,0 +1,7 @@
+#!/bin/bash
+
+image="/tmp/i3lock.png"
+gnome-screenshot --file $image
+convert $image -filter Gaussian -blur 0x8 $image
+composite -gravity center /home/linkai/Bilder/Lock.png $image $image
+i3lock -i $image
