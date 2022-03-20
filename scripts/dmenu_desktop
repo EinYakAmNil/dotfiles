@@ -1,0 +1,9 @@
+#!/bin/sh
+
+prompt="Launch program:"
+sb="#9999ff"
+sf="#ffffff"
+nb="#331133"
+nf="#ffb2b2"
+
+j4-dmenu-desktop --dmenu="dmenu -i -p \"$prompt\" -nb \"$nb\" -nf \"$nf\" -sb \"$sb\" -sf \"$sf\"" --term="st"

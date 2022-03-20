@@ -1,0 +1,6 @@
+#!/bin/sh
+
+id=$(xinput list | grep -i touchpad | grep -o "id=[0-9]*" | grep -o "[0-9]*")
+state=$(xinput list-props $id | grep "Device Enabled")
+
+[ "${state: -1}" -gt 0 ] && xinput disable $id || xinput enable $id

@@ -1,7 +1,0 @@
-#!/bin/bash
-
-while true
-do
-	feh --randomize --bg-fill /home/linkai/Bilder/wallpapers/
-	sleep 120
-done

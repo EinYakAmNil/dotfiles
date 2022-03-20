@@ -1,0 +1,7 @@
+#!/bin/sh
+delta=300
+while true
+do
+	feh --no-fehbg -z --bg-fill /home/linkai/Bilder/wallpapers/*
+	sleep $delta
+done

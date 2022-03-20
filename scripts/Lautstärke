@@ -1,0 +1,18 @@
+#!/bin/sh
+
+current=$(amixer sget 'Master' | tail -n 1 | awk '{ print $5 }' | sed 's/\[\|\]\|\%//g')
+change=5
+
+case $BLOCK_BUTTON in
+	1) st -e "alsamixer"
+		;;
+	2) st -e "$EDITOR" $0
+		;;
+	4) amixer sset Master $[ "$current" + "$change" ]% && pkill -RTMIN+1 dwmblocks
+		;;
+	5) amixer sset Master $[ "$current" - "$change" ]% && pkill -RTMIN+1 dwmblocks
+		;;
+esac
+
+current=$(amixer sget 'Master' | tail -n 1 | awk '{ print $5 }' | sed 's/\[\|\]\|//g')
+echo "$current" 
