@@ -1,0 +1,14 @@
+#!/bin/sh
+
+prompt="Select book to read:"
+nb="#310c0c"
+nf="#90ee90"
+sb="#c97f7f"
+sf="#8b0000"
+
+cd $BIBLIOTHEK
+book=$(grep "\<dc:title\>" */*/metadata.opf | sed 's/<\/*dc:title>//g' | sed 's/^.*metadata.opf:\s\+//' | dmenu -l 10 -i -p "$prompt" -nb $nb -nf $nf -sb $sb -sf $sf)
+[ "$book" ] && cd "$(grep "\<dc:title\>" */*/metadata.opf | sed 's/<\/*dc:title>//g' | grep "$book" | sed 's/metadata\.opf:.*//')"
+[ "$book" ] && [ "$(ls *\.pdf)" ] && zathura *.pdf && exit 0
+[ "$book" ] && [ "$(ls *\.djvu)" ] && zathura *.djvu && exit 0
+[ "$book" ] && [ "$(ls *\.epub)" ] && ebook-viewer *.epub && exit 0

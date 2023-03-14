@@ -1,0 +1,12 @@
+#!/bin/sh
+
+case $BUTTON in
+	1) notify-send "$(cal) "$'\n----------------------' "$(calcurse -d 3)"
+		;;
+	2) st -e "$EDITOR" $0
+		;;
+	3) st -e "calcurse"
+		;;
+esac
+
+date +%H:%M" "%a" "%e." "%h" "%Y | sed 's/\s\+/ /g'

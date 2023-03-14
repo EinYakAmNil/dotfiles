@@ -1,0 +1,12 @@
+#!/bin/sh
+
+caps_state=$(xset q | grep Caps | awk '{ print $4 }')
+num_state=$(xset q | grep Caps | awk '{ print $8 }')
+icon="/usr/share/icons/Adwaita/256x256/legacy/input-keyboard.png"
+state="\nCapslock: "
+[ "$caps_state" = "on" ] && state+=" on" || state+="off"
+
+state+="\nNumlock: "
+[ "$num_state" = "on" ] && state+="on" || state+="off"
+
+echo -e $state | xargs -0 notify-send -i $icon

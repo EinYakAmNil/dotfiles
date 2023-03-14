@@ -1,0 +1,12 @@
+#!/bin/sh
+
+[ "$(acpi | awk '{ print $4 }' | sed 's/%\|,//g')" -lt "70" ] && notify-send "Kabel anschließen, schlechte Batterie!" -i gnome-power-manager
+
+case $BUTTON in
+	1) notify-send "$(acpi)" -i gnome-power-manager
+		;;
+	2) st -e "$EDITOR" $0
+		;;
+esac
+
+acpi | awk '{ print $4 }' | sed 's/,//'

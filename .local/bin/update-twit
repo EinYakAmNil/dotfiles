@@ -1,0 +1,3 @@
+#!/bin/sh
+
+while read -r l ; do python /home/linkai/Projekte/twit2rss/nitter.py $l ; done < ~/Vorlagen/rss/twitter

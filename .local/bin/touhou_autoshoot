@@ -1,0 +1,3 @@
+#!/bin/sh
+
+xdotool search --classname th06 keydown --window %@ z

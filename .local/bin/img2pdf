@@ -1,0 +1,82 @@
+#!/bin/env python3
+import os
+import subprocess
+import argparse
+from math import floor
+
+def chapter_sort(x):
+    """Turn the number in the specified column into a float, so it can be
+    sorted.
+    """
+    return float(x.split()[1])
+
+def jpg_sort(x):
+    """Sort JPEGs by the number in their name
+    """
+    return float(x.split('.')[0])
+
+def img2pdf(*directory, out="img2.tex"):
+    """Takes a number of directories containing only numbered JPGs and creates a
+    PDF file. Directory names will serve as chapters. The order of directories
+    will determine the chapter order.
+    """
+    body = ""
+    template = os.path.expandvars("$HOME/Vorlagen/latex/img2pdf.tex")
+    tag = "<++>"
+
+    for d in directory:
+        imgs = os.listdir(d)
+        imgs.sort(key=jpg_sort)
+
+        for i in imgs:
+            di = d+'/'+i
+            geometry = subprocess.run(
+                ["identify", di],
+                capture_output=True,
+                encoding='utf-8'
+            ).stdout.split(di)[1].split()[1].split("x")
+            x = geometry[0]+"pt"
+            y = geometry[1]+"pt"
+
+            body += "\clearpage\n" \
+                 "\eject \pdfpagewidth=%s \pdfpageheight=%s\n" \
+                 "\\begin{figure}[htbp]\n" \
+                 "\includegraphics[width=\pdfpagewidth, " \
+                 "height=\pdfpageheight]{%s}\n" \
+                 "\end{figure}\n" % (x, y, di)
+
+        body = body.replace(
+            "{%s/1.jpg}" % d,
+            "{%s/1.jpg}\n\pdfbookmark{%s}{%s}" % (d, d, d),
+        )
+
+    with open(template, 'r') as f:
+        latex = f.read()
+        latex = latex.replace(tag, x, 1)
+        latex = latex.replace(tag, y, 1)
+        latex = latex.replace(tag, body)
+
+    with open(out, "w") as tex:
+        tex.write(latex)
+
+    subprocess.run(["pdflatex", out])
+#Repeat to hyperlink chapters
+    subprocess.run(["pdflatex", out])
+        
+    return None
+
+ap = argparse.ArgumentParser()
+ap.add_argument(
+    "directory",
+    action='store',
+    nargs=1,
+    help="Directory containing the chapters."
+)
+args = ap.parse_args()
+
+dirs = os.listdir(args.directory[0])
+os.chdir(args.directory[0])
+dirs.sort(key=chapter_sort)
+img2pdf(
+    *dirs
+)

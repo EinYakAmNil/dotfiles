@@ -1,0 +1,25 @@
+#!/bin/sh
+
+font="Ubuntu Mono:style=Regular:size=16"
+background="#000080"
+foreground="#00ffff"
+back_selec="#0000ff"
+fore_selec="#ffff1f"
+prompt="Select song playlist:"
+selection=$(ls /home/linkai/Musik/playlists/ | sed 's/.list$//' | dmenu -i -fn "$font" -nb "$background" -nf "$foreground" -sb "$back_selec" -sf "$fore_selec" -p "$prompt")
+
+# Exit if nothing is selected.
+[ -z "$selection" ] && exit 1
+
+# Delete old playlist file
+rm /tmp/playlist
+
+# List all titles matching and write them in a temporary playlist
+while read i
+do
+	ls "$i"* >> /tmp/playlist
+done < "/home/linkai/Musik/playlists/$selection".list
+
+# Play in random order
+[ "$(pgrep mpv)" ] && echo '{"command": ["quit"]}' | socat - $MPVSOCKET
+head -n 1000 /tmp/playlist | shuf | xargs -d "\n" mpv --no-video --input-ipc-server=$MPVSOCKET

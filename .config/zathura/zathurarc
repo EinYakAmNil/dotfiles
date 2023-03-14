@@ -1,0 +1,26 @@
+set statusbar-h-padding 0
+set statusbar-v-padding 0
+set pages-per-row 1
+set adjust-open width
+set selection-clipboard clipboard
+map i recolor
+map [fullscreen] i recolor
+map w zoom width
+map [fullscreen] w zoom width
+map f toggle_fullscreen
+map [fullscreen] f toggle_fullscreen
+map s follow
+set guioptions ""
+
+set font "Ubuntu monospace 14"
+set default-fg "#d3d3d3"
+set default-bg "#220022"
+set inputbar-fg "#ffc600"
+set inputbar-bg "#131313"
+set statusbar-fg "#666eee"
+set statusbar-bg "#3e0606"
+set notification-fg "#666eee"
+set notification-bg "#3e0606"
+set recolor true
+set recolor-darkcolor "#d3d3d3"
+set recolor-lightcolor "#220022"

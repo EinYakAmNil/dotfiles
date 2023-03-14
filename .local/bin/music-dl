@@ -1,0 +1,36 @@
+#!/bin/sh
+
+mdir="/home/linkai/Musik"
+
+case $1 in
+    "url")
+	ytdl="yt-dlp --no-mtime -f 140 -x --audio-format mp3 --audio-quality 0 -o $mdir/raw/\"%(title)s.%(ext)s\" \"$(xclip -o)\""
+    ;;
+    "batch")
+	ytdl="yt-dlp --no-mtime -f 140 -x --audio-format mp3 --audio-quality 0 -o $mdir/raw/\"%(title)s.%(ext)s\" -a ~/Vorlagen/rss/newsboat"
+    ;;
+    *)
+	exit 1
+    ;;
+esac
+
+vim_rn="nvim rename.sh"
+vim_sync="nvim sync.sh"
+cd $mdir
+sh -c "st -e $ytdl"
+
+# Prepare files in raw to be renamed.
+echo "#!/bin/sh" > rename.sh
+for title in raw/*.mp3
+do
+	echo "mv -v \"$title\" \"$title\"" >> rename.sh
+done
+sh -c "st -e $vim_rn"
+
+# Update and open the sync file.
+sh rename.sh && ls raw/ >> sync.sh
+sh -c "st -e $vim_sync"
+
+# Start music tagger if it is not running already.
+[ -z $(pgrep picard) ] && picard raw/* &
+#[ -z $(pgrep kid3-qt) ] && kid3-qt &

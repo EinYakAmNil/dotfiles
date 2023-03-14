@@ -1,0 +1,3 @@
+#!/bin/sh
+
+ls /home/linkai/Bilder/wallpapers/* | sxiv -b -i -o -t | head -n 1 | xargs -I {} feh --no-fehbg --bg-fill {}
