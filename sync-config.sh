@@ -1,5 +1,5 @@
 #!/bin/sh
-DIR=/home/linkai/Projekte/My-Settings
+DIR=$(pwd)
 esc_DIR=$(echo $DIR | sed 's/\//\\\//g')
 
 # Find all config files
