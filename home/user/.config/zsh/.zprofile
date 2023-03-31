@@ -11,12 +11,7 @@
 export PATH=$PATH:$HOME/.local/bin
 export BROWSER=brave
 export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/nvidia_icd.json
-export LANG=de_DE.utf8
-export EDITOR=nvim
-export TERM=st
 export XDG_CONFIG_HOME=/home/linkai/.config
-export APP_DIRS=/usr/share/applications:$HOME/.local/share/applications:$HOME/Desktop
-export MAILCAPS=/home/linkai/.config/mailcap
 export BIBLIOTHEK=/home/linkai/Calibre-Bibliothek
 export SUDO_ASKPASS=$HOME/.local/bin/zenity_askpass
 
@@ -30,7 +25,3 @@ export GTK_THEME=Arc-Dark
 export QT_STYLE_OVERRIDE=Adwaita-Dark
 export CALIIBRE_USE_DARK_PALETTE=1
 
-
-if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-  exec startx
-fi
