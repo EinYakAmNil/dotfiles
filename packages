@@ -4,6 +4,7 @@ arc-icon-theme
 awesome
 base
 efibootmgr
+firefox
 git
 grub
 htop
@@ -15,7 +16,6 @@ linux-firmware
 linux-headers
 man-pages
 man-pages-de
-mpv
 nemo
 neofetch
 neovim
@@ -28,6 +28,7 @@ socat
 sudo
 tcpdump
 xdg-user-dirs
+xorg
 zathura
 zathura-djvu
 zathura-pdf-mupdf
