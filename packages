@@ -23,6 +23,7 @@ networkmanager
 nftables
 pacman-contrib
 pass
+pipewire
 socat
 sudo
 tcpdump
