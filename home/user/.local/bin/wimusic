@@ -1,0 +1,3 @@
+#!/bin/sh
+
+awesome-client < ~/.config/awesome/wimusic.lua
