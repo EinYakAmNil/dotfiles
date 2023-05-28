@@ -12,4 +12,7 @@ case $1 in
 	pgrep mpv && echo '{"command": ["cycle", "pause"]}' | socat - $MPVSOCKET && exit 0 || mpv --no-video --shuffle=yes --input-ipc-server=$MPVSOCKET $HOME/Musik/all/* && exit 0
 	exit 1
 	;;
+"quit")
+	echo '{"command": ["quit"]}' | socat - $MPVSOCKET
+	;;
 esac
