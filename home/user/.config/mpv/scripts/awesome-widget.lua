@@ -3,3 +3,4 @@ function update_bar()
 end
 
 mp.register_event("file-loaded", update_bar)
+mp.register_event("shutdown", update_bar)
