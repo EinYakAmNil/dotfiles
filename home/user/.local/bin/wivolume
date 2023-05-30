@@ -2,6 +2,7 @@
 
 current=$(amixer sget 'Master' | tail -n 1 | awk '{ print $5 }' | sed 's/\[\|\]\|\%//g')
 change=5
+default="20%"
 
 case $1 in
 	"status")
@@ -10,6 +11,8 @@ case $1 in
 	"inc") amixer sset Master $[ "$current" + "$change" ]% > /dev/null
 		;;
 	"dec") amixer sset Master $[ "$current" - "$change" ]% > /dev/null
+		;;
+	"default") amixer sset Master $default > /dev/null
 		;;
 	"pavu") pavucontrol
 		;;
