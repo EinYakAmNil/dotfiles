@@ -1,0 +1,15 @@
+#!/bin/sh
+
+handlers="Browser\nClipboard"
+
+h=$(echo -e $handlers | rofi -dmenu -p "Select link handler")
+
+case $h in
+
+"Browser")
+	eval $BROWSER $1
+	;;
+"Clipboard")
+	echo -n $1 | xclip -selection clipboard
+	;;
+esac
