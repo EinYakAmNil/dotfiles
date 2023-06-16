@@ -1,0 +1,20 @@
+configuration {
+	display-drun: "Anwendungen:";
+	drun-display-format: "{icon} {name}";
+	drun-match-fields: "name";
+	show-icons: true;
+	icon-theme: "Papirus";
+	kb-mode-complete: "";
+	kb-move-front: "";
+	kb-remove-to-eol: "";
+	kb-remove-char-back: "BackSpace,Shift+BackSpace";
+	kb-accept-entry: "Control+a,Return,KP_Enter";
+	kb-row-left: "Control+h";
+	kb-row-down: "Control+j,Control+n,Down";
+	kb-row-up: "Control+k,Control+p,Up";
+	kb-row-right: "Control+l";
+}
+
+@theme "yak.rasi"
+
+/* vim: ft=sass
