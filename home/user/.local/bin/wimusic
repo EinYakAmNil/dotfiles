@@ -3,7 +3,7 @@
 case $1 in
 
 "update")
-	awesome-client <~/.config/awesome/wimusic.lua
+	awesome-client <~/.config/awesome/widgets/wimusic.lua
 	;;
 "status")
 	echo '{"command": ["get_property_string", "filename"]}' | socat - $MPVSOCKET | jq '.data' | sed 's/^\"\(.*\)\.mp3\"$/\1/'
@@ -24,7 +24,7 @@ case $1 in
 	fi
 	;;
 "toggle")
-	pgrep mpv && echo '{"command": ["cycle", "pause"]}' | socat - $MPVSOCKET && exit 0 || mpv --no-video --shuffle=yes --input-ipc-server=$MPVSOCKET $HOME/Musik/all/* && exit 0
+	echo '{"command": ["cycle", "pause"]}' | socat - $MPVSOCKET && exit 0 || mpv --no-video --shuffle=yes --input-ipc-server=$MPVSOCKET $HOME/Musik/all/* && exit 0
 	exit 1
 	;;
 "next")
