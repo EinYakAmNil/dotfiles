@@ -1,0 +1,4 @@
+#!/bin/bash
+
+pw=$(ls .password-store | rev | cut -c 5- | rev | rofi -dmenu -i -p "Select password: ")
+pass "$pw" | xclip -selection clipboard

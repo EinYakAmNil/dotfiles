@@ -1,11 +1,16 @@
 #!/bin/sh
 
-handlers="Browser\nClipboard"
+handlers="Curl\nMPV\nBrowser\nClipboard"
 
-h=$(echo -e $handlers | rofi -dmenu -p "Select link handler")
+h=$(echo -e $handlers | rofi -dmenu -i -p "Select link handler: ")
 
 case $h in
-
+"Curl")
+	eval curl $1 > /tmp/tmp
+	;;
+"MPV")
+	eval mpv --loop $1
+	;;
 "Browser")
 	eval $BROWSER $1
 	;;
