@@ -1,5 +1,6 @@
 configuration {
-	display-drun: "Anwendungen:";
+	display-drun: "Anwendungen: ";
+	display-ssh: "SSH: ";
 	drun-display-format: "{icon} {name}";
 	drun-match-fields: "name";
 	show-icons: true;

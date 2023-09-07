@@ -38,14 +38,13 @@ element-icon {
 	background-color: transparent;
 }
 
-prompt {
+prompt, entry {
 	text-color: @fg;
 	background-color: @bg-alt;
-	padding: 12;
 }
 
-entry {
-	text-color: @fg;
+inputbar {
+	children: [prompt, entry];
 	background-color: @bg-alt;
 	padding: 12;
 }
@@ -53,3 +52,5 @@ entry {
 listview {
 	lines: 10;
 }
+
+/* vim: ft=sass
