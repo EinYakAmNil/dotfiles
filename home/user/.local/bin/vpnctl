@@ -1,0 +1,19 @@
+#!/bin/bash
+
+action=$(echo -e "Turn on VPN\nTurn off VPN" | rofi -dmenu -i -p "Select Action: ")
+[ -z "$action" ] && exit 1
+
+
+if [ -n "$(echo $action | grep "off")" ]
+then
+	active_vpns=$(nmcli connection show --active | grep " vpn " | awk '{print $1}')
+	[ -z "$active_vpns" ] && exit 1
+	vpn=$(echo "$active_vpns" | rofi -dmenu -i -l 15 -p "Select VPN to close: ")
+	msg=$(nmcli connection down "$vpn")
+	notify-send "$msg"
+else
+	vpns=$(nmcli connection | grep " vpn " | awk '{print $1}')
+	vpn=$(echo "$vpns" | rofi -dmenu -i -l 15 -p "Select VPN to connect to: ")
+	[ -z "$vpn" ] && exit 1
+	nmcli connection up "$vpn"
+fi
