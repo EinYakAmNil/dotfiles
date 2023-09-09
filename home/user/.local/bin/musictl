@@ -5,13 +5,14 @@
 case $1 in
 	"select")
 # Configure dmenu's look
-		font="Ubuntu Mono:style=Regular:size=16"
-		background="#282828"
-		foreground="#ebdbb2"
-		back_selec="#7c6f64"
-		fore_selec="#fbf1c7"
-		prompt="Select a song to play:"
-		selection=$(ls -t $HOME/Musik/files | sed 's/.mp3$//' | dmenu -i -fn "$font" -nb "$background" -nf "$foreground" -sb "$back_selec" -sf "$fore_selec" -p "$prompt" -l 15)
+		# font="Ubuntu Mono:style=Regular:size=16"
+		# background="#282828"
+		# foreground="#ebdbb2"
+		# back_selec="#7c6f64"
+		# fore_selec="#fbf1c7"
+		# prompt="Select a song to play:"
+		# selection=$(ls -t $HOME/Musik/all | sed 's/.mp3$//' | dmenu -i -fn "$font" -nb "$background" -nf "$foreground" -sb "$back_selec" -sf "$fore_selec" -p "$prompt" -l 15)
+		selection=$(ls -t $HOME/Musik/all | sed 's/\..*$//' | rofi -dmenu -i -l 15 -p "Select song: ")
 
 # Exit if nothing is selected.
 		[ -z "$selection" ] && exit 1
@@ -20,13 +21,13 @@ case $1 in
 		[ "$(pgrep mpv)" ] && echo '{"command": ["quit"]}' | socat - $MPVSOCKET
 
 # Start selected song and append with shuffled music library
-		cd $HOME/Musik/files && ls $PWD/* | shuf | head -n 1000 | xargs -d "\n" mpv --no-video --input-ipc-server=$MPVSOCKET "$selection".mp3 && exit 0
+		cd $HOME/Musik/all && ls $PWD/* | shuf | head -n 1000 | xargs -d "\n" mpv --no-video --input-ipc-server=$MPVSOCKET "$selection".mp3 && exit 0
 
 # No idea what went wrong
 		exit 2
 		;;
 	"toggle")
-		pgrep mpv && echo '{"command": ["cycle", "pause"]}' | socat - $MPVSOCKET && exit 0 || mpv --no-video --shuffle=yes --input-ipc-server=$MPVSOCKET $HOME/Musik/files/* && exit 0
+		echo '{"command": ["cycle", "pause"]}' | socat - $MPVSOCKET && exit 0 || mpv --no-video --shuffle=yes --input-ipc-server=$MPVSOCKET $HOME/Musik/all/* && exit 0
 		exit 1
 		;;
 	"next")
