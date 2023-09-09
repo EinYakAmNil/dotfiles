@@ -6,7 +6,7 @@ case $1 in
 	awesome-client <~/.config/awesome/widgets/wimusic.lua
 	;;
 "status")
-	echo '{"command": ["get_property_string", "filename"]}' | socat - $MPVSOCKET | jq '.data' | sed 's/^\"\(.*\)\.mp3\"$/\1/'
+	echo '{"command": ["get_property_string", "filename"]}' | socat - $MPVSOCKET | jq '.data' | sed 's/^\"\(.*\)\..*\"$/\1/'
 	;;
 "notify")
 	current_id=$(echo '{"command": ["get_property", "playlist-pos"]}' | socat - $MPVSOCKET | jq -M '.data')
@@ -16,7 +16,7 @@ case $1 in
 
 		for i in {1..3}; do
 			let current_id++
-			fn=$(echo '{"command": ["get_property", "playlist/'"$current_id"'/filename"]}' | socat - $MPVSOCKET | jq -M '.data' | sed 's/\".*\/\(.*\)\.mp3\"$/\1/g')
+			fn=$(echo '{"command": ["get_property", "playlist/'"$current_id"'/filename"]}' | socat - $MPVSOCKET | jq -M '.data' | sed 's/\".*\/\(.*\)\..*\"$/\1/g')
 			next=$next"$fn"'\n'
 		done
 
@@ -36,7 +36,7 @@ case $1 in
 	exit 1
 	;;
 "copy")
-	echo '{"command": ["get_property_string", "filename"]}' | socat - $MPVSOCKET | jq '.data' | sed 's/^\"\(.*\)\.mp3\"$/\1/' | xclip -rmlastnl -selection primary
+	echo '{"command": ["get_property_string", "filename"]}' | socat - $MPVSOCKET | jq '.data' | sed 's/^\"\(.*\)\..*\"$/\1/' | xclip -rmlastnl -selection primary
 	;;
 "quit")
 	echo '{"command": ["quit"]}' | socat - $MPVSOCKET
