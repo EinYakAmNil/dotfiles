@@ -21,7 +21,7 @@ case $1 in
 		[ "$(pgrep mpv)" ] && echo '{"command": ["quit"]}' | socat - $MPVSOCKET
 
 # Start selected song and append with shuffled music library
-		selection=$(ls $HOME/Musik/all | grep "$selection")
+		selection=$(ls $HOME/Musik/all | grep "$selection\.")
 		cd $HOME/Musik/all && ls $PWD/* | shuf | head -n 1000 | xargs -d "\n" mpv --no-video --input-ipc-server=$MPVSOCKET "$selection" && exit 0
 
 # No idea what went wrong
