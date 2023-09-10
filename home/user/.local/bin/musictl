@@ -12,7 +12,7 @@ case $1 in
 		# fore_selec="#fbf1c7"
 		# prompt="Select a song to play:"
 		# selection=$(ls -t $HOME/Musik/all | sed 's/.mp3$//' | dmenu -i -fn "$font" -nb "$background" -nf "$foreground" -sb "$back_selec" -sf "$fore_selec" -p "$prompt" -l 15)
-		selection=$(ls -t $HOME/Musik/all | sed 's/\..*$//' | rofi -dmenu -i -l 15 -p "Select song: ")
+		selection=$(ls -t $HOME/Musik/all | sed 's/\(.*\)\..*$/\1/' | rofi -dmenu -i -l 15 -p "Select song: ")
 
 # Exit if nothing is selected.
 		[ -z "$selection" ] && exit 1
