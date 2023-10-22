@@ -1,46 +1,27 @@
 #!/bin/sh
-font="Ubuntu Mono:style=Regular:size=16"
-background="#282828"
-foreground="#ebdbb2"
-back_selec="#7c6f64"
-fore_selec="#fbf1c7"
-prompt="Select video quality:"
+prompt="Select video quality: "
 
-#case $1 in
-#    "url")
-#	ytmpv="mpv"
-#    ;;
-#    "batch")
-#	ytmpv="mpv --playlist=$HOME/Vorlagen/rss/newsboat"
-#    ;;
-#    *)
-#	exit 1
-#    ;;
-#esac
+link="$(xclip -o -selection clipboard)"
 
-link="$(xclip -o)"
+echo $link | grep "playlist" && mpv "$link" && exit 0
+echo $link | grep "&list=" && mpv "$link" && exit 0
 
-#Check if the link is valid
 check=$(yt-dlp -F $link)
 [ $(echo $?) -gt 0 ] && notify-send "Can't watch "$link && exit 1
 
 quality=$(echo "$check" | awk '$2 == "mp4" && !($12 ~ /,$/ )' | grep --invert-match only)
 echo $quality
-selection=$(echo -e "default\n""$quality" | dmenu -i -fn "$font" -nb "$background" -nf "$foreground" -sb "$back_selec" -sf "$fore_selec" -p "$prompt" -l 15 | awk '{print $1}')
+selection=$(echo -e "default\n""$quality" | rofi -dmenu -p "$prompt" -l 15 | awk '{print $1}')
 
 echo $selection
-#If nothing is selected then exit
 [ -z "$selection" ] && exit 1
 
-#If default is selected then don't add the quality argument for default quality
 if [ "$selection" == "default" ] 
 then
-	mpv "$link" & disown
+	exec mpv "$link" & disown
 
-#Play video at selected quality
 else
-	mpv --ytdl-format=$selection "$link" & disown
-
+	exec mpv --ytdl-format=$selection "$link" & disown
 fi
 
 exit 0
