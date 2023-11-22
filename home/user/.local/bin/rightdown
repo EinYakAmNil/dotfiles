@@ -1,3 +1,0 @@
-#!/bin/sh
-
-xdotool search --classname FML mousedown --window %@ 3

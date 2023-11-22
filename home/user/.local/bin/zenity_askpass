@@ -1,3 +1,0 @@
-#!/bin/sh
-
-zenity --password --title "Passworteingabe" --timeout=15

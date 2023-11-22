@@ -11,9 +11,7 @@
 export PATH=$PATH:$HOME/.local/bin
 export BROWSER=brave
 export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/nvidia_icd.json
-export XDG_CONFIG_HOME=/home/linkai/.config
-export BIBLIOTHEK=/home/linkai/Calibre-Bibliothek
-export SUDO_ASKPASS=$HOME/.local/bin/zenity_askpass
+export XDG_CONFIG_HOME=$HOME/.config
 
 # Custom sockets
 export MPVSOCKET="$XDG_RUNTIME_DIR/mpv.socket"

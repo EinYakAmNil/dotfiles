@@ -1,8 +1,0 @@
-#!/bin/sh
-
-prompt1="Select partition to mount:"
-prompt2="Select mount point:"
-part=$(lsblk -r -p -n | grep -v sda | grep part | awk '{print $1}' | dmenu -p "$prompt1") || exit 1
-mountpoint=/mnt/$(ls /mnt | dmenu -p "$prompt2") || exit 1
-
-sudo -A mount $part $mountpoint && notify-send "$part mounted on $mountpoint."
