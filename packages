@@ -25,6 +25,7 @@ nftables
 pacman-contrib
 pass
 pipewire
+rofi
 socat
 sudo
 tcpdump
