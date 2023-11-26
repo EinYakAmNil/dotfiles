@@ -10,7 +10,6 @@ firefox
 git
 grub
 htop
-j4-dmenu-desktop
 lightdm
 lightdm-gtk-greeter
 linux
