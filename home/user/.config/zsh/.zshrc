@@ -24,6 +24,8 @@ export KEYTIMEOUT=1
 
 # Disable Ctrl-s from freezing the terminal
 stty stop undef
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
 
 autoload -Uz compinit
 compinit
@@ -31,7 +33,7 @@ compinit
 setopt COMPLETE_ALIASES
 
 # vi-like menu nagvigation
-zstyle ':completion:*' menu select
+zstyle ':completion:*' rehash true menu select
 zmodload zsh/complist
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
@@ -53,6 +55,7 @@ alias rename='perl-rename'
 alias music-diff='diff <(ls /mnt/Intenso/Musik/ | grep mp3) <(ls ~/Musik/files/)'
 alias vim='nvim'
 alias sxiv='sxiv -b'
+alias ip='ip -color=auto'
 
 # Functions
 add-wallpaper () {
@@ -65,7 +68,7 @@ setopt autocd
 
 # Autosuggestions from history
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=bold,underline"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=69"
 bindkey '^J' autosuggest-accept
 bindkey '^P' history-beginning-search-backward
 bindkey '^N' history-beginning-search-forward
