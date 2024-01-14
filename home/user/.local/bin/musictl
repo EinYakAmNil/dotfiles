@@ -8,7 +8,7 @@ case $1 in
 
 		[ -z "$playlst" ] && exit 1
 
-		selection=$(ls -t $HOME/Musik/$playlst | sed 's/\(.*\)\..*$/\1/' | rofi -dmenu -i -l 15 -p "Select song: ")
+		selection=$(ls -t "$HOME/Musik/$playlst" | sed 's/\(.*\)\..*$/\1/' | rofi -dmenu -i -l 15 -p "Select song: ")
 
 # Exit if nothing is selected.
 		[ -z "$selection" ] && exit 1
@@ -17,8 +17,8 @@ case $1 in
 		[ "$(pgrep mpv)" ] && echo '{"command": ["quit"]}' | socat - $MPVSOCKET
 
 # Start selected song and append with shuffled music library
-		selection=$(ls $HOME/Musik/$playlst | grep "$selection\.")
-		cd $HOME/Musik/$playlst && ls $PWD/* | shuf | head -n 1000 | xargs -d "\n" mpv --no-video --input-ipc-server=$MPVSOCKET "$selection" && exit 0
+		selection=$(ls "$HOME/Musik/$playlst" | grep "$selection\.")
+		cd "$HOME/Musik/$playlst" && ls "$PWD"/* | shuf | head -n 1000 | xargs -d "\n" mpv --no-video --input-ipc-server=$MPVSOCKET "$selection" && exit 0
 
 # No idea what went wrong
 		exit 2
