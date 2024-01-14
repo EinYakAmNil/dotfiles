@@ -7,7 +7,7 @@ case $1 in
 	ytdl="yt-dlp --no-mtime -f ba -x --audio-format mp3 --audio-quality 0 -o $mdir/.raw/\"%(title)s.%(ext)s\" \"$(xclip -o)\""
     ;;
     "batch")
-	ytdl="yt-dlp --no-mtime -f ba -x --audio-format mp3 --audio-quality 0 -o $mdir/.raw/\"%(title)s.%(ext)s\" -a $HOME/Vorlagen/rss/newsboat"
+	ytdl="yt-dlp --no-mtime -f ba -x --audio-format mp3 --audio-quality 0 -o $mdir/.raw/\"%(title)s.%(ext)s\" -a $HOME/Musik/.download.list"
     ;;
     *)
 	exit 1
