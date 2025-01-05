@@ -14,7 +14,9 @@ PS1="%B%{$fg[red]%}%n%{$fg[orange]%}@%{$fg[yellow]%}%M %{$fg[green]%}%~%{$reset_
 HISTFILE=~/.histfile
 HISTSIZE=100000
 SAVEHIST=100000
-#setopt hist_ignore_dups
+setopt hist_save_no_dups
+setopt hist_find_no_dups
+setopt hist_ignore_dups
 setopt hist_ignore_all_dups
 setopt hist_expire_dups_first
 
@@ -56,6 +58,7 @@ alias music-diff='diff <(ls /mnt/Intenso/Musik/ | grep mp3) <(ls ~/Musik/files/)
 alias vim='nvim'
 alias sxiv='sxiv -b'
 alias ip='ip -color=auto'
+alias msync="rsync -Prvz ~/Musik/all/ root@xandria:~linkai.zhang/Musik/all/"
 
 # Functions
 add-wallpaper () {
@@ -65,10 +68,11 @@ add-wallpaper () {
 
 # Automatically cd into typed directories
 setopt autocd
+eval "$(zoxide init --cmd cd zsh)"
 
 # Autosuggestions from history
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=69"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=69,bg=#220022,underline"
 bindkey '^J' autosuggest-accept
 bindkey '^P' history-beginning-search-backward
 bindkey '^N' history-beginning-search-forward

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+arg=$(echo -e "clipboard\nbatch" | rofi -dmenu -i -p "Download music in: ...")
+if [ -n "$arg" ]; then
+	exec music-dl $arg
+fi

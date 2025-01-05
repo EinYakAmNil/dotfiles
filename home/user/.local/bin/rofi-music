@@ -1,0 +1,15 @@
+#!/bin/bash
+ROFI_INFO="Select song:"
+[[ "$MUSICDIR" ]] || MUSICDIR=$HOME/Musik/all
+
+if [ -z "$1" ]; then
+	ls -t "$MUSICDIR"
+	exit 0
+fi
+
+echo '{"command": ["quit"]}' | socat - $MPVSOCKET > /dev/null
+playlist="/tmp/rofi-music.list"
+echo "$MUSICDIR/$1" > $playlist
+ls "$MUSICDIR"/* | shuf | head -n 1000 >> $playlist
+
+coproc (mpv --no-terminal --no-video --input-ipc-server=$MPVSOCKET --playlist=$playlist)

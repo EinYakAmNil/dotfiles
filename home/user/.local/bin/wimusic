@@ -1,7 +1,6 @@
 #!/bin/sh
 
 case $1 in
-
 "update")
 	awesome-client <~/.config/awesome/widgets/wimusic.lua
 	;;
@@ -24,6 +23,7 @@ case $1 in
 	fi
 	;;
 "toggle")
+	[[ "$(file -b $MPVSOCKET)" == "socket" ]] || mpv --input-ipc-server=$MPVSOCKET
 	echo '{"command": ["cycle", "pause"]}' | socat - $MPVSOCKET && exit 0 || mpv --no-video --shuffle=yes --input-ipc-server=$MPVSOCKET $HOME/Musik/all/* && exit 0
 	exit 1
 	;;

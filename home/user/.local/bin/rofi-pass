@@ -1,4 +1,8 @@
 #!/bin/bash
-
-pw=$(ls .password-store | rev | cut -c 5- | rev | rofi -dmenu -i -p "Select password: ")
-pass "$pw" | xclip -selection clipboard
+cd $HOME/.password-store
+pw=$(find -name "*.gpg" | sed "s/\.\/\(.*\)\.gpg/\1/"| rofi -dmenu -i -p "Select password: ")
+[[ -n $pw ]] || exit
+pass "$pw" | xclip -r -selection clipboard
+notify-send "password '$pw' copied to clipboard. Flushing in 60 seconds."
+sleep 60
+echo "" | xclip -r -selection clipboard

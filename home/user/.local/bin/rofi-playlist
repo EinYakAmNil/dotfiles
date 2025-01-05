@@ -1,0 +1,9 @@
+#!/bin/bash
+musicdir="$HOME/Musik"
+
+if [ -z "$1" ]; then
+	ls "$musicdir"
+	exit 0
+fi
+
+coproc (MUSICDIR="$musicdir/$1" rofi -show music -modes "music:rofi-music")

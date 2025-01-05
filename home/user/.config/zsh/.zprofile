@@ -20,6 +20,6 @@ export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 # Dark mode for applications (GTK, Qt, Calibre, ...)
 export GTK2_RC_FILES=/usr/share/themes/Arc-Dark/gtk-2.0/gtkrc
 export GTK_THEME=Arc-Dark
-export QT_STYLE_OVERRIDE=Adwaita-Dark
+export QT_STYLE_OVERRIDE=kvantum-dark
 export CALIIBRE_USE_DARK_PALETTE=1
 

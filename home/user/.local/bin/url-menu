@@ -1,20 +1,61 @@
 #!/bin/sh
 
-handlers="Curl\nMPV\nBrowser\nClipboard"
+handlers='Auto\nBrowser\nClipboard\nQR Code'
+
+[[ $1 ]] && url=$1 || url=$(xclip -selection clipboard -o)
 
 h=$(echo -e $handlers | rofi -dmenu -i -p "Select link handler: ")
 
+mpv_playlist() {
+	echo $*
+	playlist_file="/tmp/mpv-$(date +"%Y-%m-%d-%H-%M-%S")"
+	for link in $*; do
+		echo $link >> "$playlist_file"
+	done
+	mpv --no-terminal --profile=builtin-pseudo-gui --playlist="$playlist_file" & disown
+}
+
 case $h in
-"Curl")
-	eval curl $1 > /tmp/tmp
-	;;
-"MPV")
-	eval mpv --loop $1
+"Auto")
+	case $url in
+	"https://i.pximg.net"*)
+		img_dir="/tmp/pixiv-$(date +"%Y-%m-%d-%H-%M-%S")"
+		mkdir "$img_dir"
+		cd "$img_dir"
+		for link in $url; do
+			curl --referer "https://www.pixiv.net" $link -O
+		done
+		sxiv -p -b "$img_dir" -o >> /tmp/marked_images
+		;;
+	"https://odysee.com/"*)
+		mpv_playlist $url
+		;;
+	"https://www.youtube.com/watch?v="*)
+		mpv_playlist $url
+		;;
+	*".mp4")
+		mpv_playlist $url
+		;;
+	*".mp3")
+		mpv_playlist $url
+		;;
+	*".flac")
+		mpv_playlist $url
+		;;
+	"https://mangapill.com/chapters"*)
+		notify-send "Downloading Manga: $url"
+		mangapiller $url
+		;;
+	esac
 	;;
 "Browser")
 	eval $BROWSER $1
 	;;
 "Clipboard")
 	echo -n $1 | xclip -selection clipboard
+	;;
+"QR Code")
+	echo $1 | qrencode -s 10 -o /tmp/url-menu.png
+	exec sxiv -b /tmp/url-menu.png
 	;;
 esac
