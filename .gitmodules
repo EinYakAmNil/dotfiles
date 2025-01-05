@@ -1,6 +1,0 @@
-[submodule "home/user/.config/awesome"]
-	path = home/user/.config/awesome
-	url = https://github.com/EinYakAmNil/Awesome-Yak.git
-[submodule "home/user/.config/nvim"]
-	path = home/user/.config/nvim
-	url = https://github.com/EinYakAmNil/nvim-config.git
