@@ -1,5 +1,4 @@
 alsa-utils
-x11-ssh-askpass
 arc-gtk-theme
 arc-icon-theme
 awesome
@@ -60,11 +59,12 @@ tcpdump
 texlab
 tree
 tree-sitter
-ttf-symbola-free
+ttf-noto-emoji-monochrome
 typescript-language-server
 vscode-css-languageserver
 vscode-html-languageserver
 wezterm
+x11-ssh-askpass
 xclip
 xdg-user-dirs
 xorg
