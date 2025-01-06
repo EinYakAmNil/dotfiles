@@ -18,7 +18,7 @@ done
 echo "Linking system config files."
 find ./system/ -mindepth 1 -type f -printf '%P\n' | while read file
 do
-	sudo ln -fbsv --suffix="old" "$PWD/system/$file" "/$file"
+	sudo ln -fbsv --suffix=".old" "$PWD/system/$file" "/$file"
 done
 
 echo "Create directories for user level configuration."
@@ -30,5 +30,5 @@ done
 echo "Linking user config files."
 find ./user/ -mindepth 1 -type f -printf '%P\n' | while read file
 do
-	ln -fbsv --suffix="old" "$PWD/user/$file" "$HOME/$file"
+	ln -fbsv --suffix=".old" "$PWD/user/$file" "$HOME/$file"
 done
