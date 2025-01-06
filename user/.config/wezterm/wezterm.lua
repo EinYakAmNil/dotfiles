@@ -57,9 +57,12 @@ local colors = {
 	},
 }
 local font = wezterm.font_with_fallback {
-	{ family = 'FiraCode Nerd Font',
+	{
+		family = 'FiraCode Nerd Font',
 		weight = "Regular",
-	}
+	},
+	"Noto Color Emoji",
+	"Noto Sans CJK SC",
 }
 config.colors = colors
 config.use_ime = true
@@ -67,11 +70,12 @@ config.enable_tab_bar = false
 config.keys = keys
 config.quick_select_alphabet = "qwertz"
 config.font = font
+config.font_size = 14
 config.window_padding = {
-	left = 2,
-	right = 2,
-	top = 4,
-	bottom = 4,
+	left = 0,
+	right = 0,
+	top = 0,
+	bottom = 0,
 }
 
 return config
