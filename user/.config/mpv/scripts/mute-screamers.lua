@@ -1,15 +1,15 @@
-local function is_screamer(streamer)
-	local screamer_list = {
-		"Dantes",
-		"TF Blade",
-		"Tyler1",
-	}
+local screamer_list = {
+	"Dantes",
+	"TF Blade",
+	"Tyler1",
+}
 
-	screamers = {}
+local function is_screamer(streamer)
 	for _, s in pairs(screamer_list) do
-		screamers[s] = true
+		if string.find(streamer, s) then
+			return true
+		end
 	end
-	return screamers[streamer] ~= nil
 end
 
 local function mute_chapter(_, current)
