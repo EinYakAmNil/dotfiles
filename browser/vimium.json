@@ -1,0 +1,59 @@
+{
+	"name": "Vimium C",
+	"@time": "6.1.2025, 17:29:17",
+	"time": 1736180957497,
+	"environment": {
+		"extension": "2.11.3",
+		"platform": "linux",
+		"chromium": 131
+	},
+	"exclusionRules": [
+		{
+			"passKeys": "",
+			"pattern": ":https://mail.google.com/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://archive.org/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://excalidraw.com/"
+		},
+		{
+			"passKeys": "",
+			"pattern": ":https://app.diagrams.net/"
+		}
+	],
+	"grabBackFocus": true,
+	"keyLayout": 2,
+	"keyMappings": [
+		"#!no-check",
+		"# Insert your preferred key mappings here.",
+		"unmap f",
+		"unmap F",
+		"unmap yf",
+		"map s LinkHints.activate",
+		"map S LinkHints.activateOpenInNewTab",
+		"map ys LinkHints.activateCopyLinkUrl",
+		"unmap x",
+		"unmap X",
+		"map d removeTab mayClose",
+		"map u restoreTab",
+		"map m scrollPageDown",
+		"map M scrollPageUp",
+		"map <a-h> Vomnibar.activateHistoryInNewTab",
+		"map h goPrevious",
+		"map l goNext",
+		""
+	],
+	"linkHintCharacters": "qwerasdfyxcv",
+	"searchEngines": [
+		"w: https://www.wikipedia.org/w/index.php?title=Special:Search&search=%s Wikipedia",
+		"www.google.com/?q=%s Google",
+		"www.duckduckgo.com/?q=%s Duck",
+		""
+	],
+	"searchUrl": "https://www.duckduckgo.com/?q=$s Duck",
+	"vimSync": true
+}
