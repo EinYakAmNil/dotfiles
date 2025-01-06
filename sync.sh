@@ -3,7 +3,7 @@
 
 echo "Installing AUR helper"
 sudo pacman -S git base-devel
-git clone https://aur.archlinux.org/yay.git
+[[ -z $(ls yay) ]] && git clone https://aur.archlinux.org/yay.git
 makepkg -siD yay
 
 echo "Installing packages"
