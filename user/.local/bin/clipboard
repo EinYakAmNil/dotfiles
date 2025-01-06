@@ -1,4 +1,0 @@
-#!/bin/sh
-
-selection=$(echo -e "clipboard\nprimary\nsecondary" | dmenu)
-xclip -selection "$selection" -o | xargs -I {} xdotool type --clearmodifiers {}
