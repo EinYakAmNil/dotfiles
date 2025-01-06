@@ -11,8 +11,9 @@ map f toggle_fullscreen
 map [fullscreen] f toggle_fullscreen
 map s follow
 set guioptions ""
+set database sqlite
 
-set font "Ubuntu monospace 14"
+set font "Ubuntu Mono 16"
 set default-fg "#d3d3d3"
 set default-bg "#220022"
 set inputbar-fg "#ffc600"

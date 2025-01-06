@@ -15,8 +15,20 @@ do
 	sudo mkdir -pv $dir
 done
 
+echo "Linking system config files."
+find ./system/ -mindepth 1 -type f -printf '%P\n' | while read file
+do
+	# sudo ln -sv "$PWD/system/$file" "/$file"
+done
+
 echo "Create directories for user level configuration."
 find ./user/ -mindepth 1 -type d -printf "$HOME/%P\n" | while read dir
 do
 	mkdir -pv $dir
+done
+
+echo "Linking user config files."
+find ./system/ -mindepth 1 -type f -printf '/%P\n' | while read dir
+do
+	# sudo mkdir -pv $dir
 done
