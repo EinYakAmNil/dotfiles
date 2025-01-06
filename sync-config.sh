@@ -1,9 +1,16 @@
 #!/bin/sh
+ls sync-config.sh || echo "Please run this script in the directory of the repository" && exit 1
 DIR=$(pwd)
 esc_DIR=$(echo $DIR | sed 's/\//\\\//g')
 
 # Install basic packages
 sudo pacman -S - < $DIR/packages
+
+# Install AUR helper
+sudo pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
 
 # Find all config files
 CONFIGS=$(find $DIR -type f -not \( -path "$DIR/\.git/*" -o -path "$DIR/git-repos" -o -path "$DIR/sync-config.sh" -o -path "$DIR/packages" \))
