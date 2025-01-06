@@ -1,6 +1,8 @@
 configuration {
 	display-drun: "Anwendungen: ";
 	display-ssh: "SSH: ";
+	display-music: "Select song: ";
+	display-playlist: "Select playlist: ";
 	drun-display-format: "{icon} {name}";
 	drun-match-fields: "name";
 	show-icons: true;
