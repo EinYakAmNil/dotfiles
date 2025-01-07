@@ -64,7 +64,6 @@ typescript-language-server
 vscode-css-languageserver
 vscode-html-languageserver
 wezterm
-x11-ssh-askpass
 xclip
 xdg-user-dirs
 xorg
