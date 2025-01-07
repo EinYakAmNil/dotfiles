@@ -18,6 +18,7 @@ done
 echo "Linking system config files."
 find ./system/ -mindepth 1 -type f -printf '%P\n' | while read file
 do
+	sudo chown -R root:root ./system
 	sudo ln -fbsv --suffix=".old" "$PWD/system/$file" "/$file"
 done
 
