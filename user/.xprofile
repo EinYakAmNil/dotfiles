@@ -4,7 +4,7 @@ export QT_STYLE_OVERRIDE=kvantum
 
 # numlockx on &
 # picom -b
-# fcitx -rd
+# fcitx5 -rd
 # nm-applet &
 
 # Cleanup .xsession-errors

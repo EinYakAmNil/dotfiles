@@ -12,6 +12,7 @@ export PATH=$PATH:$HOME/.local/bin
 export BROWSER=brave
 export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/nvidia_icd.json
 export XDG_CONFIG_HOME=$HOME/.config
+export GOPATH=$HOME/.local/lib/go
 
 # Custom sockets
 export MPVSOCKET="$XDG_RUNTIME_DIR/mpv.socket"
