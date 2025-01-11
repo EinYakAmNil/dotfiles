@@ -70,6 +70,8 @@ add-wallpaper () {
 setopt autocd
 eval "$(zoxide init --cmd cd zsh)"
 
+source /usr/share/zsh/plugins/fzf-tab-git/fzf-tab.zsh
+
 # Autosuggestions from history
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=69,bg=#220022,underline"
