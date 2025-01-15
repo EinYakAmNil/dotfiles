@@ -2,22 +2,23 @@
 playlist_dir="$HOME/Musik"
 
 case "$ROFI_RETV" in
-	0)
-		ls "$playlist_dir"
-		;;
-	1)
-		if [ -z "$ROFI_DATA" ]; then
-			echo -en "\0prompt\x1fSelect song: \n"
-			echo -en "\0data\x1f$playlist_dir/$1\n"
-			ls "$playlist_dir/$1"
-		else
-			echo '{"command": ["quit"]}' | socat - $MPVSOCKET > /dev/null
-			playlist="/tmp/rofi-music.list"
-			echo "$ROFI_DATA/$1" > $playlist
-			ls "$ROFI_DATA"/* | shuf | head -n 1000 >> $playlist
+0)
+	ls "$playlist_dir"
+	;;
+1)
+	if [ -z "$ROFI_DATA" ]; then
+		echo -en "\0prompt\x1fSelect song: \n"
+		echo -en "\0data\x1f$playlist_dir/$1\n"
+		ls "$playlist_dir/$1"
+		exit 0
+	else
+		echo '{"command": ["quit"]}' | socat - $MPVSOCKET >/dev/null
+		playlist="/tmp/rofi-music.list"
+		echo "$ROFI_DATA/$1" >$playlist
+		ls "$ROFI_DATA"/* | shuf | head -n 1000 >>$playlist
 
-			mpv --no-terminal --no-video --input-ipc-server=$MPVSOCKET --playlist=$playlist &> /dev/null &
-			exit 0
-		fi
-		;;
+		mpv --no-terminal --no-video --input-ipc-server=$MPVSOCKET --playlist=$playlist &>/dev/null &
+		exit 0
+	fi
+	;;
 esac
