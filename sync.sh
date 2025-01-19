@@ -41,7 +41,7 @@ ln -sfbv --suffix=".old" "$PWD/awesome" "$HOME/.config/awesome"
 
 echo "Setting up neovim config"
 git clone https://github.com/EinYakAmNil/nvim-config.git
-ln -sfbv --suffix=".old" "$PWD/awesome" "$HOME/.config/nvim"
+ln -sfbv --suffix=".old" "$PWD/nvim-config" "$HOME/.config/nvim"
 
 echo "Adding mpv sponsorblock"
 mkdir -pv $HOME/Repositorien
