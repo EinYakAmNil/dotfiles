@@ -67,7 +67,7 @@ sudo
 tcpdump
 texlab
 tree
-tree-sitter
+tree-sitter-cli
 ttf-noto-emoji-monochrome
 ttf-ubuntu-font-family
 typescript-language-server

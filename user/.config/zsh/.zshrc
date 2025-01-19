@@ -48,23 +48,17 @@ alias ls='ls --color=auto'
 alias la='ls -a'
 alias ll='ls -l'
 alias grep='grep --color'
+alias ip='ip -color=auto'
 alias '..'='cd ..'
 alias '...'='cd ../..'
 alias -- -='cd ~-'
-alias cp='cp -i -v'
-alias mv='mv -i -v'
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias rm='rm -v'
 alias rename='perl-rename'
-alias music-diff='diff <(ls /mnt/Intenso/Musik/ | grep mp3) <(ls ~/Musik/files/)'
 alias vim='nvim'
 alias sxiv='sxiv -b'
-alias ip='ip -color=auto'
 alias msync="rsync -Prvz ~/Musik/all/ root@xandria:~linkai.zhang/Musik/all/"
-
-# Functions
-add-wallpaper () {
-	cp /tmp/vatt/tmp ~/Bilder/Anime/$1
-	ln ~/Bilder/Anime/$1 ~/Bilder/wallpapers/$1
-}
 
 # Automatically cd into typed directories
 setopt autocd
