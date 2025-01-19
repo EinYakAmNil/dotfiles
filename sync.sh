@@ -37,16 +37,15 @@ echo "Setting up awesome wm config"
 mkdir -pv $HOME/Projekte
 cd $HOME/Projekte
 git clone https://github.com/EinYakAmNil/Awesome-Yak.git awesome
-ln -sfbv --suffix=".old" "$PWD/awesome" "$HOME/.config/awesome"
+ln -sfbvT --suffix=".old" "$PWD/awesome" "$HOME/.config/awesome"
 
 echo "Setting up neovim config"
 git clone https://github.com/EinYakAmNil/nvim-config.git
-ln -sfbv --suffix=".old" "$PWD/nvim-config" "$HOME/.config/nvim"
+ln -sfbvT --suffix=".old" "$PWD/nvim-config" "$HOME/.config/nvim"
 
 echo "Adding mpv sponsorblock"
-mkdir -pv $HOME/Repositorien
 mkdir -pv $HOME/Repositorien
 cd $HOME/Repositorien
 git clone https://github.com/po5/mpv_sponsorblock.git
 cd mpv_sponsorblock
-ln -sfbv --suffix=".old" "$PWD/sponsorblock.lua" "$HOME/.config/mpv/scripts/"
+ln -sfbvT --suffix=".old" "$PWD/sponsorblock.lua" "$HOME/.config/mpv/scripts/"
