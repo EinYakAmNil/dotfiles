@@ -2,34 +2,51 @@
 [[ -z $(ls ./sync.sh) ]] && echo "Please run this script in the directory of the repository." && exit 1
 
 echo "Installing AUR helper"
-sudo pacman -S git base-devel
-[[ -z $(ls yay) ]] && git clone https://aur.archlinux.org/yay.git
-makepkg -siD yay
+sudo pacman -S --needed git base-devel
+if which yay &>/dev/null; then
+	cd /tmp
+	git clone https://aur.archlinux.org/yay.git
+	makepkg -siD yay
+fi
 
 echo "Installing packages"
-yay -S - < ./packages
+yay -S --needed - <./packages
 
-echo "Create directories for system level configuration."
-find ./system/ -mindepth 1 -type d -printf '/%P\n' | while read dir
-do
+echo "Create directories for system level configuration"
+find ./system/ -mindepth 1 -type d -printf '/%P\n' | while read dir; do
 	sudo mkdir -pv $dir
 done
 
-echo "Linking system config files."
-find ./system/ -mindepth 1 -type f -printf '%P\n' | while read file
-do
+echo "Linking system config files"
+find ./system/ -mindepth 1 -type f -printf '%P\n' | while read file; do
 	sudo chown -R root:root ./system
 	sudo ln -fbv --suffix=".old" "$PWD/system/$file" "/$file"
 done
 
-echo "Create directories for user level configuration."
-find ./user/ -mindepth 1 -type d -printf "$HOME/%P\n" | while read dir
-do
+echo "Create directories for user level configuration"
+find ./user/ -mindepth 1 -type d -printf "$HOME/%P\n" | while read dir; do
 	mkdir -pv $dir
 done
 
-echo "Linking user config files."
-find ./user/ -mindepth 1 -type f -printf '%P\n' | while read file
-do
+echo "Linking user config files"
+find ./user/ -mindepth 1 -type f -printf '%P\n' | while read file; do
 	ln -fbv --suffix=".old" "$PWD/user/$file" "$HOME/$file"
 done
+
+echo "Setting up awesome wm config"
+mkdir -pv $HOME/Projekte
+cd $HOME/Projekte
+git clone https://github.com/EinYakAmNil/Awesome-Yak.git awesome
+ln -sfbv --suffix=".old" "$PWD/awesome" "$HOME/.config/awesome"
+
+echo "Setting up neovim config"
+git clone https://github.com/EinYakAmNil/nvim-config.git
+ln -sfbv --suffix=".old" "$PWD/awesome" "$HOME/.config/nvim"
+
+echo "Adding mpv sponsorblock"
+mkdir -pv $HOME/Repositorien
+mkdir -pv $HOME/Repositorien
+cd $HOME/Repositorien
+git clone https://github.com/po5/mpv_sponsorblock.git
+cd mpv_sponsorblock
+ln -sfbv --suffix=".old" "$PWD/sponsorblock.lua" "$HOME/.config/mpv/scripts/"
