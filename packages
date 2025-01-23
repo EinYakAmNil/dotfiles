@@ -13,14 +13,13 @@ ccls
 dex
 dkms
 efibootmgr
-fcitx5
+fcitx5-im
 fcitx5-chinese-addons
-fcitx5-configtool
 ffpmeg
 figlet
 firefox
 flameshot
-fzf-completion-git
+fzf-tab-git
 gcc
 gimp
 git
@@ -52,6 +51,7 @@ network-manager-applet
 networkmanager
 nftables
 noto-fonts-cjk
+noto-fonts-emoji
 numlockx
 oreo-cursors-git
 pacman-contrib

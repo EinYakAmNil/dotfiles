@@ -46,6 +46,7 @@ ln -sfbvT --suffix=".old" "$PWD/nvim-config" "$HOME/.config/nvim"
 echo "Adding mpv sponsorblock"
 mkdir -pv $HOME/Repositorien
 cd $HOME/Repositorien
-git clone https://github.com/po5/mpv_sponsorblock.git || exit 0
+ls mpv_sponsorblock || git clone https://github.com/po5/mpv_sponsorblock.git
 cd mpv_sponsorblock
-ln -sfbvT --suffix=".old" "$PWD/sponsorblock.lua" "$HOME/.config/mpv/scripts/"
+ln -sfbvT --suffix=".old" "$PWD/sponsorblock.lua" "$HOME/.config/mpv/scripts/sponsorblock.lua"
+ln -sfbvT --suffix=".old" "$PWD/sponsorblock_shared" "$HOME/.config/mpv/scripts/sponsorblock_shared"

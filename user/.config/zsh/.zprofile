@@ -13,6 +13,8 @@ export BROWSER=brave
 export VK_ICD_FILENAMES=/usr/share/vulkan/icd.d/nvidia_icd.json
 export XDG_CONFIG_HOME=$HOME/.config
 export GOPATH=$HOME/.local/lib/go
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+export QT_STYLE_OVERRIDE=kvantum
 
 # Custom sockets
 export MPVSOCKET="$XDG_RUNTIME_DIR/mpv.socket"

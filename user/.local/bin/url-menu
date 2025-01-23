@@ -49,13 +49,13 @@ case $h in
 	esac
 	;;
 "Browser")
-	eval $BROWSER $1
+	eval $BROWSER $url
 	;;
 "Clipboard")
-	echo -n $1 | xclip -selection clipboard
+	echo -n $url | xclip -selection clipboard
 	;;
 "QR Code")
-	echo $1 | qrencode -s 10 -o /tmp/url-menu.png
+	echo $url | qrencode -s 10 -o /tmp/url-menu.png
 	exec sxiv -b /tmp/url-menu.png
 	;;
 esac
