@@ -58,7 +58,7 @@ alias rm='rm -v'
 alias rename='perl-rename'
 alias vim='nvim'
 alias sxiv='sxiv -b'
-alias msync="rsync -Prvz ~/Musik/all/ root@xandria:~linkai.zhang/Musik/all/"
+alias msync="rsync -Parvz --delete ~/Musik/all/ root@xandria:~linkai.zhang/Musik/all/"
 
 # Automatically cd into typed directories
 setopt autocd
