@@ -15,7 +15,7 @@
 
 window {
 	width: 55%;
-	font: "UbuntuMono Nerd Font 20";
+	font: "Ubuntu Mono 20";
 }
 
 element {
@@ -41,6 +41,7 @@ element-icon {
 prompt, entry {
 	text-color: @fg;
 	background-color: @bg-alt;
+	padding: 12;
 }
 
 inputbar {
