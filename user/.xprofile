@@ -3,5 +3,5 @@ picom -b
 fcitx5 -rd
 nm-applet &
 
-# Cleanup .xsession-errors
-# rm -f ~/.xsession-errors ~/.xsession-errors.old
+# Prevent to much logging to ~/.xession-errors
+exec > /dev/null 2>&1
