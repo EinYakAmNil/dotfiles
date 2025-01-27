@@ -1,0 +1,11 @@
+[Unit]
+Description=Default volume for USB-Headset
+After=wireplumber.service
+
+[Service]
+Type=oneshot
+ExecStartPre=/bin/bash -c 'until pgrep -x pipewire >/dev/null && pgrep -x wireplumber >/dev/null; do sleep 10; done'
+ExecStart=/usr/bin/amixer -c Headset set PCM 20%
+
+[Install]
+WantedBy=default.target
