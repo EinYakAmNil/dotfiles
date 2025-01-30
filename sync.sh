@@ -1,7 +1,7 @@
 #!/bin/bash
 [[ -z $(ls ./sync.sh) ]] && echo "Please run this script in the directory of the repository." && exit 1
 
-if not which yay &>/dev/null; then
+if ! which yay &>/dev/null; then
 	echo "Installing AUR helper"
 	sudo pacman -S --needed git base-devel
 	cd /tmp
