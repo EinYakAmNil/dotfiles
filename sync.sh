@@ -10,6 +10,7 @@ if ! which yay &>/dev/null; then
 fi
 
 echo "Installing packages"
+yay -Syu
 yay -S --needed - <./packages
 
 echo "Create directories for system level configuration"
