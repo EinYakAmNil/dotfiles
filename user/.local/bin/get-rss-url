@@ -1,0 +1,24 @@
+#!/bin/env python3
+
+import requests
+import argparse
+import sys
+import re
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("url", type=str)
+    url = vars(parser.parse_args())["url"]
+    piped_instances = ["https://piped.kavin.rocks", "https://piped.privacydev.net"]
+
+    for alt in piped_instances:
+        if alt in url:
+            url = url.replace(alt, "https://youtube.com")
+
+    session = requests.Session()
+    session.headers["User-Agent"] = "curl/8.4.0"
+    html_resp = session.get(url, allow_redirects=True).text
+
+    match = re.search('"rssUrl":".*?"', html_resp).group()
+    rss_url = match.split('"')[-2]
+    print(rss_url)

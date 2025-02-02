@@ -78,4 +78,15 @@ config.window_padding = {
 	bottom = 4,
 }
 
+config.webgpu_preferred_adapter = {
+	backend = "Vulkan",
+	device = 7298,
+	device_type = "DiscreteGpu",
+	driver = "NVIDIA",
+	driver_info = "565.77",
+	name = "NVIDIA GeForce GTX 1050 Ti",
+	vendor = 4318,
+}
+config.front_end = 'WebGpu'
+
 return config

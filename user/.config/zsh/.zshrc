@@ -60,6 +60,13 @@ alias vim='nvim'
 alias sxiv='sxiv -b'
 alias msync="rsync -Parvz --delete ~/Musik/all/ root@xandria:~linkai.zhang/Musik/all/"
 
+webm2opus () {
+	cd $HOME/Musik/.raw
+	for i in *webm; do
+		ffmpeg -i $i ${i::-4}opus 
+	done
+}
+
 # Automatically cd into typed directories
 setopt autocd
 eval "$(zoxide init --cmd cd zsh)"
