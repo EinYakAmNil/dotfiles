@@ -7,15 +7,14 @@ case $1 in
 	ytdl="yt-dlp --no-mtime -f ba -o $mdir/.raw/\"%(channel)s - %(title)s.%(ext)s\" \"$(xclip -selection clipboard -o)\""
     ;;
     "batch")
-	ytdl="yt-dlp --no-mtime -f ba -o $mdir/.raw/\"%(channel)s - %(title)s.%(ext)s\" -a $HOME/Musik/.download.list"
+	ytdl="yt-dlp --no-mtime -f ba -o $mdir/.raw/\"%(channel)s - %(title)s.%(ext)s\" -a $mdir/.download.list"
     ;;
     *)
 	exit 1
     ;;
 esac
 
-vim_rn="nvim .rename.sh"
-vim_sync="nvim .sync.sh"
+vim_rn="nvim $mdir/.raw/.rename.sh"
 cd "$mdir/.raw"
 sh -c "$TERM -e $ytdl"
 
@@ -26,10 +25,3 @@ do
 	echo "mv -vi \"$title\" \"$title\"" >> .rename.sh
 done
 sh -c "$TERM -e $vim_rn"
-
-# Update and open the sync file.
-# sh .rename.sh && ls .raw/ >> .sync.sh
-# sh -c "$TERM -e $vim_sync"
-
-# Start music tagger if it is not running already.
-# [ -z $(pgrep picard) ] && picard .raw/* &

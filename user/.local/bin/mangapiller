@@ -1,0 +1,36 @@
+#!/bin/bash
+url=$1
+path=$(echo $url | rev | cut -d "/" -f 1 | rev)
+echo $path
+chapter_id=$(echo $url | rev | cut -d "/" -f 2 | rev | sed "s/-/\//")
+echo "$chapter_id"
+mkdir -p /tmp/$path && cd /tmp/$path || exit 1
+
+# Don't download if the PDF file already exists.
+if [ -f $path.pdf ]; then
+	zathura $path.pdf &
+	disown
+	exit 0
+fi
+
+curl --no-progress-meter $url >/tmp/$path/.html
+image_count=$(sed -n 's/<div class="text-sm">page 1\/\([0-9][0-9]*\)<\/div>$/\1/p' /tmp/$path/.html)
+echo $image_count
+
+user_agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KH TML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
+cdn="https://cdn.readdetectiveconan.com/file/mangap"
+for i in $(seq $image_count); do
+	# index the images from right to left.
+	# [[ $(($i % 2)) -eq 0 ]] && j=$((i + 1)) || j=$((i - 1))
+	if [[ $(($i % 2)) -eq 0 ]]; then
+		j=$((i + 1))
+	else
+		j=$((i - 1))
+	fi
+	curl --referer "mangapill.com" --user-agent "$user_agent" "$cdn/$chapter_id/$i.jpeg" >/tmp/$path/$j.jpg
+done
+
+# equal width for leading zeros. Can't do it with seq due to reindexing.
+perl-rename "s/^(\d\.)/0\1/" *
+magick *.jpg $path.pdf
+zathura $path.pdf &
