@@ -16,7 +16,7 @@ local keys = {
 		mods = 'CTRL',
 		action = wezterm.action.QuickSelectArgs {
 			patterns = {
-				'https?://.+?(?=")'
+				'https?://.+?(?=[ \\\\"\'])',
 			}
 		}
 	},
