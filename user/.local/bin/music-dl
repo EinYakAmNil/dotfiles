@@ -1,10 +1,9 @@
 #!/bin/sh
-
 mdir="$HOME/Musik"
 
 case $1 in
     "clipboard")
-	ytdl="yt-dlp --no-mtime -f ba -o $mdir/.raw/\"%(channel)s - %(title)s.%(ext)s\" \"$(xclip -selection clipboard -o)\""
+	ytdl="yt-dlp --no-mtime -f ba -x --audio-format \"webm>opus\" -o $mdir/.raw/\"%(channel)s - %(title)s.%(ext)s\" \"$(xclip -selection clipboard -o)\""
     ;;
     "batch")
 	ytdl="yt-dlp --no-mtime -f ba -o $mdir/.raw/\"%(channel)s - %(title)s.%(ext)s\" -a $mdir/.download.list"
