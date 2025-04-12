@@ -55,7 +55,7 @@ case $h in
 	echo -n $url | xclip -selection clipboard
 	;;
 "QR Code")
-	echo $url | qrencode -s 10 -o /tmp/url-menu.png
+	echo -n $url | qrencode -s 10 -o /tmp/url-menu.png
 	exec sxiv -b /tmp/url-menu.png
 	;;
 esac
