@@ -2,7 +2,7 @@
 
 case $1 in
 "update")
-	awesome-client <~/.config/awesome/widgets/wimusic.lua
+	awesome-client <~/.config/awesome/scripts/update-music-widget.lua
 	;;
 "status")
 	echo '{"command": ["get_property_string", "filename"]}' |
